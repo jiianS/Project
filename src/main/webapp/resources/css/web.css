@@ -1,0 +1,134 @@
+/******google font******/
+
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+
+ html, body {
+	 font-family: 'Jeju Gothic', sans-serif;
+     padding: 0;
+     margin: 0;
+     height: 100%;        
+     line-height: 1.8;
+     color: #333333;
+}
+
+header,footer,nav,section{display:block;}
+h2{color: #555555;}
+
+a{text-decoration:none;
+ color: #808080;}
+
+.top {position:fixed; width:100%; z-index:2 ; 
+        background-color: #ffffff; top: 0;
+        margin: 0px 0px;
+        box-shadow: 0px 2px 1px #54795399;
+}
+
+.wide{letter-spacing:4px;}
+
+.left {float: left}
+.right{float: right}
+.center{text-align: center;}
+
+.txtLeft{text-align: left;}
+
+.bar .bar-item{
+    float:left; 
+    width:auto;
+    border:none;
+    display:block;
+    outline:0
+}
+
+/***button***/
+.button {
+    border:none;
+    display:inline-block;
+    padding: 16px 14px;    
+    overflow:hidden;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.button:hover{background-color: #cecece;}
+
+.white{background-color: #ffffff}
+
+
+/**************************************/
+.bgImg{
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    background-image: url("../img/b1.jpg");
+    filter:grayscale(40%);
+    min-height: 100%;
+}
+
+.startDiv{
+
+    left: 5px;    
+    padding:40px;
+    margin: 80px 0; 
+    font-weight: bold;
+}
+
+#goAbout{
+    width: auto;
+    margin-top:20px;
+    opacity: 50%;
+    position: relative;
+}
+
+
+/*********icon***********/
+.icon{
+    position:absolute;
+    color: #757575;
+    padding : 24px 50px;
+    font-size: 25px
+}
+.fa{padding: 5px;}
+.icon .fa:hover{cursor: pointer; opacity: 0.6}
+/**************************************/
+
+
+/******about****************/
+
+#about{ margin: 130px 0;}
+
+.aboutDiv{
+    margin-top:60px;
+    padding: 0 10px;
+}
+.aboutItem{
+    padding: 0 5%;
+    width: 22.5%;
+    font-size: 14px;
+}
+
+.aboutItem i{
+    margin-bottom:16px;
+    font-size: 60px;    
+}
+
+.aboutItem p{  color: #707070;}
+
+
+/*********footer***********/
+footer{
+     clear: both;
+    background-color: #14291f;
+    color: #dfdfdf;   
+    padding: 70px 0;
+}
+
+
+footer div{
+    color: #b2b2b2;
+    font-size: 22px;
+}
+
+footer div .fa:hover{cursor: pointer; opacity: 0.6}
+
