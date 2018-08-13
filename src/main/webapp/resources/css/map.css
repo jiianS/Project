@@ -3,14 +3,13 @@ h2{
     margin-left: 5%;
 }
 
+
 #mapContainer {    
     min-height: 100%;
     width: 100%;
-    background-color: #f5faf9;
+    background-color:  #f5faf9;
     position: fixed;
 }
-
-
 
 #mapView{
     width: 40%;
@@ -20,9 +19,38 @@ h2{
 
 }
 
-#mapselect{
+#mapContent{
     width: 40%;
     height: 650px;    
     background-color: #d66ca9;
     margin: 0 5%;
 }
+
+
+#mapForm{
+    margin: 0 5%;
+    width: 90%;
+    height: 100px;
+}
+
+
+#gu{
+    width: 60%;
+    margin: 0;
+    float: right;
+    height: 35px;
+    display: inline-block;
+    text-align-last: center;
+}
+
+#mapDetail{
+    background-color: azure;
+    margin: 5%;    
+    width: 90%;
+    height: 72%;    
+    overflow-y: scroll;
+    font-size:14px;
+}
+
+.m_li:hover {cursor: pointer;}
+   

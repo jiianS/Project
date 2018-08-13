@@ -36,4 +36,20 @@ public class HomeController {
 		return "home";
 	}
 	
+	
+	@RequestMapping("/")
+	public String main() {
+		return "main";
+	}
+	
+	@RequestMapping("/map")
+	public String map() {
+		return "map";
+	}
+	@RequestMapping("/analysis")
+	public String analysis() {
+		return "analysis";
+	}
+
+	
 }
