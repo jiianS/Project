@@ -64,6 +64,7 @@
             	$(".m_li").off().on("click",function(){
             		var content_id = $(this).attr("id");
 
+            		//id 값 받아서 처리
             		// for문과 비슷하다고 보면 됨 , data.DATA 속의 value값을 갖고오고, id값이 동일한 경우 원하는 value값을 받아오려함
             		$.each(data.DATA, function( key, value ) {
             			  if(value.content_id == content_id){
