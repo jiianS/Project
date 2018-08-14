@@ -11,8 +11,15 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2a6f7408c186c46a63cc30d539f1e1d9&libraries=services,clusterer,drawing"></script>
 
-	<script type="text/javascript" src = "resources/js/map.js"></script>
+<script type="text/javascript" src = "resources/js/map2.js"></script>
+<script>
+$(document).ready(function() {
+	drawMap(37.524071, 127.02179);
+	selectList();
+});
 
+
+</script>
 
 <title> map </title>
 </head>
@@ -42,8 +49,8 @@
    <div id="mapView" class="left"></div>    
    <div id="mapContent" class="left">
        <form name="mapForm" id="mapForm" >
-           <h3>원하는 지역구를 선택하세요</h3>
-        	   <select name="gu" id="gu" title="원하는 지역구를 선택합니다.">
+           <h4>원하는 지역구를 선택하세요</h4>
+           <select name="gu" id="gu" title="원하는 지역구를 선택합니다.">
            </select>
        </form>
        <div id="mapDetail">

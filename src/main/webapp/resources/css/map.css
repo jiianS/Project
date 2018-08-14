@@ -22,7 +22,8 @@ h2{
 #mapContent{
     width: 40%;
     height: 650px;    
-    background-color: #d66ca9;
+    box-shadow:  2px 2px 2px 1px #54795399;
+    background-color:  #f7fffb;
     margin: 0 5%;
 }
 
@@ -44,7 +45,7 @@ h2{
 }
 
 #mapDetail{
-    background-color: azure;
+    box-shadow: 2px 3px 4px #54795399;
     margin: 5%;    
     width: 90%;
     height: 72%;    
@@ -53,4 +54,12 @@ h2{
 }
 
 .m_li:hover {cursor: pointer;}
-   
+
+#m_ul span{
+	display:block;
+	color : #acacac;
+}
+span{
+	    text-align-last: center;
+	     
+}
