@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+html{background-color: #fcfcfc}
+
+h1 {margin-top: 80px; text-align: center; padding: 30px 0;}
+#wrap {width: 80%; margin: 0 10%;}
+
+
+/*************************************/
+.con_select{margin: 0 4%; }
+.op_select{
+    width: 25%;
+    margin: 0 4%;
+    height: 35px;
+    display: inline-block;
+    text-align-last: center;
+    font-size: 15px;
+}
+
+span{ width:40%; margin: 0 5%}
+#anl_btn{ width: 55% ;}
+.btn{height:35px; background-color: #f0f4f3;}
+.btn1{margin:0 5%; width:38% }
+
+#chart_body {width: 100%; height: 300px;}
+/*************************************/
+
+#bar_body {width: 100%; height: 40px; background-color: ; margin-bottom: 50px;}
+
+#bar_div {width: 0%; height: 25px; background-color: red; text-align: center; font-weight: bold; color: white;}

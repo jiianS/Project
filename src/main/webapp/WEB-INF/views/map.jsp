@@ -28,7 +28,7 @@
       <a href="/web#about" class="bar-item button">
      	 <i class="fa fa-bicycle"></i>ABOUT</a>
       <a href="/web/map" class="bar-item button">
-          <i class="fa fa-map-marker"></i> 따릉이위치는?</a>
+          <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
       <a href="/web/analysis" class="bar-item button">
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
       <a href="#contact" class="bar-item button">
@@ -38,7 +38,7 @@
 </div>
 
 <div id="mapContainer">
-   <h2>따릉이 대여소는 어디에?</h2>
+   <h2>따릉이는 어디에 ?</h2>
    <div id="mapView" class="left"></div>    
    <div id="mapContent" class="left">
        <form name="mapForm" id="mapForm" >

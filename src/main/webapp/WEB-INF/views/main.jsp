@@ -23,7 +23,7 @@
       <a href="/web#about" class="bar-item button">
      	 <i class="fa fa-bicycle"></i>ABOUT</a>
       <a href="/web/map" class="bar-item button">
-          <i class="fa fa-map-marker"></i> 따릉이위치는?</a>
+          <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
       <a href="/web/analysis" class="bar-item button">
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
       <a href="#contact" class="bar-item button">
@@ -38,9 +38,9 @@
     <span style="font-size: 35px"> 따르릉 따르릉 비켜주세요 ~
     </span><br>
     
-    <span style="font-size: 35px">서울자전거</span>
-    <span style="color: forestgreen; font-size: 45px; ">　따릉이</span>
-    <span style="font-size: 35px">　지나갑니다 ~</span>
+    <span style="font-size: 35px">서울 공공자전거</span>
+    <span style="color: forestgreen; font-size: 45px; "> 따릉이</span><br>
+    <span style="font-size: 35px">지나갑니다 ~</span>
     <p style="margin: 20px 0;">
     <a href="/web#about" id="goAbout" class="button left"
             style="font-size:20px; background-color: #f4f4f4">
@@ -56,16 +56,12 @@
 
 <!--about-->
 <div id="about" class="center">
-  <h2>ABOUT 따릉따릉이</h2>
+  <h2>ABOUT CIBA</h2>
   <p class="center gray" style="font-size: 15px; color: #606060; margin:30px 0 ;">
-     <span class="txtLeft">
-         자전거와 함께하는 건강한 도시, 세계적인 자전거 도시 SEOUL</span><br>
-        
+     <span> 자전거와 함께하는 건강한 도시, 세계적인 자전거 도시 SEOUL</span><br>       
+     <span>서울 자전거 따릉이는 누구나, 언제나, 어디서나 쉽고 편리하게 이용할 수 있는 무인대여 시스템입니다.</span><br>
       <span>
-      서울 자전거 따릉이는 누구나, 언제나, 어디서나 쉽고 편리하게 이용할 수 있는 무인대여 시스템입니다.<br>    
-      </span> 
-      <span>
-          <span style="font-weight: bold; color: #555555">따릉따릉이</span>는 서울자전거 대여소 위치를 보여주고 이용정보를 분석하고자 만들었습니다.
+          <span style="font-weight: bold; color: #555555">따릉따릉이</span>는 서울 공공자전거 대여소 위치를 보여주고 이용정보를 분석하고자 만들었습니다.
       </span>
   </p>
   
@@ -84,7 +80,7 @@
       <p class="center">
           대여소의 위치 조회를 할 수 있습니다
       </p>
-      <p class="txtLeft" >따릉이 이용하는 사람들의 성별 및 연령대별로 분석할 수 있습니다</p>  
+      <p class="txtLeft">따릉이 이용하는 사람들의 성별 및 연령대별로 분석할 수 있습니다</p>  
     </div>
     
     <div class="left aboutItem">

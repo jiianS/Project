@@ -1,13 +1,15 @@
 h2{
  margin-top: 120px;
     margin-left: 5%;
+    color: #acacac;
 }
 
 
 #mapContainer {    
     min-height: 100%;
     width: 100%;
-    background-color:  #f5faf9;
+    /*background-color:  #f5faf9;*/
+      background-color: #FAFAFA;
     position: fixed;
 }
 
@@ -21,9 +23,9 @@ h2{
 
 #mapContent{
     width: 40%;
-    height: 650px;    
+    height: 650px;  
     box-shadow:  2px 2px 2px 1px #54795399;
-    background-color:  #f7fffb;
+    background-color:  #f5faf9;
     margin: 0 5%;
 }
 
@@ -45,21 +47,9 @@ h2{
 }
 
 #mapDetail{
-    box-shadow: 2px 3px 4px #54795399;
+   box-shadow:   2px 3px 4px #54795399;
     margin: 5%;    
     width: 90%;
     height: 72%;    
-    overflow-y: scroll;
-    font-size:14px;
 }
-
-.m_li:hover {cursor: pointer;}
-
-#m_ul span{
-	display:block;
-	color : #acacac;
-}
-span{
-	    text-align-last: center;
-	     
-}
+   
