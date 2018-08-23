@@ -132,17 +132,25 @@ a{text-decoration:none;
     width: 45%;
     padding: 0 30px;    
 }   
-.contact_col i{
-    font-size: 20px;
-    padding: 5px;
-}
+
 .contact_col p {
     text-align: left;
     padding-left: 7%;
 }
 
+
 .contact_info{ padding: 23px 20px;}
 
+.contact_icon{
+	margin: 5px 0;
+	padding-top: 10px ;
+	width:30px; height: 25px;
+}
+.contact_icon img{
+	 position: relative;
+	 display: inline-block;
+	width:30px; height: 25px;
+}
 
 .form_div{  width: 50%;margin: 10px 0;}
 
@@ -178,9 +186,7 @@ a{text-decoration:none;
     text-align:center;
 	vertical-align:middle;
 	cursor:pointer;
-	
 }
-
 
 
 /*********footer***********/

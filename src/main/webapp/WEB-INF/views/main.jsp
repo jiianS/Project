@@ -102,9 +102,12 @@
 
    <div>
     <div class="contact_col left contact_info">
-      <p><i class="fa fa-map-pin"></i>SEOUL, KOREA</p>
-      <p><i class="fa fa-mobile"></i> Phone: +82 010 2489 3767</p>
-      <p><i class="fa fa-envelope-o"></i> Email: jiianiii1028@gmail.com</p> 
+      <p><span class='contact_icon'><img src="resources/img/placeholder.svg"> </span>
+      	SEOUL, KOREA</p>
+      <p><span class='contact_icon'><img src="resources/img/smartphone-call.svg"></span>
+      	 Phone: +82 010 2489 3767</p>
+      <p><span class='contact_icon'><img src="resources/img/mail.svg"></span>      
+      		Email: jiianiii1028@gmail.com</p> 
     </div>
     
     <div class="contact_col left">
