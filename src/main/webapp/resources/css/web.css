@@ -164,7 +164,7 @@ a{text-decoration:none;
     
 }
 
-#comments{
+#con_comments{
     padding: 18px 10px;
     width: 93%;
     height: 45px;
@@ -173,7 +173,7 @@ a{text-decoration:none;
 }
 
 
-.contact_btn{
+#contact_btn{
     width: 97%;
     margin : 0 1%;
     height: 40px;

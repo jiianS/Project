@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="resources/css/web.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src = "resources/js/mail.js"></script>
     
     <title>따릉따릉이</title>
 </head>
@@ -113,22 +115,21 @@
     <div class="contact_col left">
       <div>
         <div class="form_div left">
-          <input class="form_input" id="name" name="name" placeholder="Name" type="text" required>
+          <input class="form_input" id="con_name" name="con_name" placeholder="Name" type="text" required>
         </div>
         <div class="form_div left">
-          <input class="form_input" id="email" name="email" placeholder="Email" type="email" required>
+          <input class="form_input" id="con_mail" name="con_mail" placeholder="Email" type="email" required>
         </div>
       </div>
        
-        <textarea id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+        <textarea id="con_comments" name="con_comments" placeholder="Comment" rows="5"></textarea>
         
         <div class="row">
-          <button class="contact_btn " type="submit">Send</button>
+          <button id="contact_btn" type="submit">Send</button>
       </div> 
     </div>
   </div>
 </div>
-
 
 
 <!-- Footer -->
