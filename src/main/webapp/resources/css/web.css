@@ -1,7 +1,7 @@
 /******google font******/
 
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
-
+@charset "UTF-8";
 
  html, body {
 	 font-family: 'Jeju Gothic', sans-serif;
@@ -13,6 +13,7 @@
 }
 
 header,footer,nav,section{display:block;}
+
 h2{color: #555555;}
 
 a{text-decoration:none;
@@ -91,16 +92,19 @@ a{text-decoration:none;
 }
 .fa{padding: 5px;}
 .icon .fa:hover{cursor: pointer; opacity: 0.6}
-/**************************************/
 
 
-/******about****************/
+/*************about****************/
 
-#about{ margin: 130px 0;}
+#about{ 
+	margin-top: 130px;
+    padding: 60px 30px;
+}
 
 .aboutDiv{
-    margin-top:60px;
-    padding: 0 10px;
+    margin-top : 60px;
+    padding: 0 20px;
+    height:  300px;
 }
 .aboutItem{
     padding: 0 5%;
@@ -116,12 +120,75 @@ a{text-decoration:none;
 .aboutItem p{  color: #707070;}
 
 
+/***********contact *************/
+
+#contact{
+    padding: 50px 0;
+    margin:  50px 5%;
+    height:  350px;
+}
+
+.contact_col{
+    width: 45%;
+    padding: 0 30px;    
+}   
+.contact_col i{
+    font-size: 20px;
+    padding: 5px;
+}
+.contact_col p {
+    text-align: left;
+    padding-left: 7%;
+}
+
+.contact_info{ padding: 23px 20px;}
+
+
+.form_div{  width: 50%;margin: 10px 0;}
+
+.form_input{
+    width: 85%;
+    height: 35px;
+    display: inline-block;
+    position: relative;
+    padding: 0 10px;
+    border-radius:4px;
+    
+}
+
+#comments{
+    padding: 18px 10px;
+    width: 93%;
+    height: 45px;
+    font-family: 'Jeju Gothic', sans-serif;
+	border-radius:4px;
+}
+
+
+.contact_btn{
+    width: 97%;
+    margin : 0 1%;
+    height: 40px;
+    display:inline-block;
+    border:1px solid transparent;
+	border-radius:4px;
+    color : #535353;
+    font-family: 'Jeju Gothic', sans-serif;
+	font-size:15px;
+    text-align:center;
+	vertical-align:middle;
+	cursor:pointer;
+	
+}
+
+
+
 /*********footer***********/
 footer{
      clear: both;
     background-color: #14291f;
     color: #dfdfdf;   
-    padding: 70px 0;
+    padding: 90px 0;
 }
 
 

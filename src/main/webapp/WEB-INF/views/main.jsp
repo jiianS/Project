@@ -26,7 +26,7 @@
           <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
       <a href="/web/analysis" class="bar-item button">
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
-      <a href="#contact" class="bar-item button">
+      <a href="/web#contact" class="bar-item button">
           <i class="fa fa-envelope"></i> CONTACT</a>
     </div>
   </div>
@@ -93,6 +93,39 @@
   </div>
   
 </div>
+
+<!--contect-->
+
+<div class="center" id ="contact">
+  <h1 class="center">Contact</h1>
+  <p class="center"><em>Contact Me!</em></p>
+
+   <div>
+    <div class="contact_col left contact_info">
+      <p><i class="fa fa-map-pin"></i>SEOUL, KOREA</p>
+      <p><i class="fa fa-mobile"></i> Phone: +82 010 2489 3767</p>
+      <p><i class="fa fa-envelope-o"></i> Email: jiianiii1028@gmail.com</p> 
+    </div>
+    
+    <div class="contact_col left">
+      <div>
+        <div class="form_div left">
+          <input class="form_input" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="form_div left">
+          <input class="form_input" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+       
+        <textarea id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
+        
+        <div class="row">
+          <button class="contact_btn " type="submit">Send</button>
+      </div> 
+    </div>
+  </div>
+</div>
+
 
 
 <!-- Footer -->
