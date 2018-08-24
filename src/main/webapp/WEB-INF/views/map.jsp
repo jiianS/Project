@@ -10,10 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2a6f7408c186c46a63cc30d539f1e1d9&libraries=services,clusterer,drawing"></script>
-
 	<script type="text/javascript" src = "resources/js/map.js"></script>
-
-
+	
 <title> map </title>
 </head>
 
@@ -31,26 +29,50 @@
           <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
       <a href="/web/analysis" class="bar-item button">
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
-      <a href="#contact" class="bar-item button">
+      <a href="/web#contact" class="bar-item button">
           <i class="fa fa-envelope"></i> CONTACT</a>
     </div>
   </div>
 </div>
 
 <div id="mapContainer">
-   <h2>따릉이는 어디에 ?</h2>
+   <h2>따릉이 대여소는 어디에?</h2>
    <div id="mapView" class="left"></div>    
-   <div id="mapContent" class="left">
-       <form name="mapForm" id="mapForm" >
+   <div id="mapContent">
+       <div id="mapForm">
            <h3>원하는 지역구를 선택하세요</h3>
-        	   <select name="gu" id="gu" title="원하는 지역구를 선택합니다.">
+           <select name="gu" id="gu" title="원하는 지역구를 선택합니다.">
            </select>
-       </form>
-       <div id="mapDetail">
-       	<ul id="m_ul"> </ul>
        </div>
-       
+       <div id="mapDetail">
+       		<ul id="m_ul"> </ul>
+       </div>
    </div>
+ </div>
+     
+<div id="rentContain" class ="display_none">
+    <h2 >자세히 알아보기</h2>
+    <div id ="rentTitle">
+        <span>대여소명</span>
+        <span id ="rentName" class="rentSpan"> </span>
+        <p> 
+            <span>대여소위치</span> <span id="rentaddr" class="rentSpan">서울시 구로구 고척2동~~~~ </span>
+        </p>
+        <hr>
+        <div id="rentcheck">
+            <p> 
+	            <span>2017, 2018년 월별 이용건수 분석</span><br>
+	            <span>해당 데이터는 [2017.01 - 2018.06] 입니다  </span><br>
+            </p>
+            
+            <button type="button" class="rentbtn contact_btn">2017</button>
+            <button type="button" class="rentbtn contact_btn">2018</button>
+         <hr>
+        </div>  
+      </div>
+            
+    <div id="rentContent" style="background-color: aliceblue"> </div>
 </div>
+   
 </body>
 </html>

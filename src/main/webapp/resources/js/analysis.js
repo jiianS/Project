@@ -13,11 +13,13 @@ $(document).ready(function(){
 		var op3 = $("#op3").val();	//	이용건수 | 이동시간
 		var check = 0;
 		
-		console.log(op1 +";"+op2 +";"+op3)
-		if(op2 == "연령대별" &&  op3 == "이용건수")  { check = 1 }
-		else if(op2 == "연령대별" &&  op3 == "이동시간")  { check = 2 }
-		else if(op2 == "성별"  &&  op3 == "이용건수")  { check = 3 }
-		else if(op2 == "성별"  &&  op3 == "이동시간")  { check = 4 }
+		if     (op2 == "연령대별" && op3 == "이용건수") { check = 1 }
+		else if(op2 == "연령대별" && op3 == "이동거리") { check = 2 }
+		else if(op2 == "연령대별" && op3 == "이동시간") { check = 3 }
+		
+		else if(op2 == "성별" && op3 == "이용건수")  { check = 4 }
+		else if(op2 == "성별" && op3 == "이동거리")  { check = 5 }
+		else if(op2 == "성별" && op3 == "이동시간")  { check = 6 }
 		
 		// 맵리듀스 돌리는 파트!
 		$.ajax({
@@ -27,8 +29,7 @@ $(document).ready(function(){
 			
 			beforeSend:function() {
 				$(".overlay").removeClass('display_none');
-				console.log("overlay 진행중!!!!!!")
-			}
+			}	//로딩
 			
 		}).done(function (data) {
 			var mrName = data.name;

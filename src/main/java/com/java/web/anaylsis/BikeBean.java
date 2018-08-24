@@ -2,26 +2,32 @@ package com.java.web.anaylsis;
 
 import org.apache.hadoop.io.Text;
 
-import com.java.web.HomeController;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-
 public class BikeBean {
 
-	String rentalDate; // 대여일자
-	String gender; // 성별
-	String age; // 연령대
 
-	int useCount = 0; // 이용횟수
-	int time = 0; // 이동시간
+
+	String dateMap; 	// 대여일자 (map page에서 사용할 것)
+	String rentID;		// 대여소 id
+	String gender;		// 성별   _col[4]
+	String age; 		// 연령대 _col[5]
+	
+	int useCount = 0; 	// 이용건수_col[6]
+	int distance = 0;	// 이동거리_col[9]
+	int time = 0; 		// 이동시간_col[10]
 
 	public BikeBean(Text value) {
 		try {
 			String[] col = value.toString().split(",");
-			setRentalDate(HomeController.rentalDate);
-			setGender(col[4]);
+			setRentalDate(AnaylsisController.rentalDate);
+			setGender(col[4]);	
 			setAge(col[5]);
-			setUseCount(Integer.parseInt(col[6].equals("")?"0":col[6]));	// 이용횟수
-			setTime(Integer.parseInt(col[10].equals("")?"0":col[10]));	// 이동시간
+			setUseCount(Integer.parseInt(col[6].equals("")?"0":col[6]));	// 이용건수
+			setDistance(Integer.parseInt(col[9].equals("")?"0":col[9]));	// 이동거리			
+			setTime(Integer.parseInt(col[10].equals("")?"0":col[10]));		// 이동시간
+			
+			/************************************************************************/
+			setDateMap(col[0]);
+			setRentID(rentID);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,6 +74,16 @@ public class BikeBean {
 		this.useCount = useCount;
 	}
 
+
+	public int getDistance() {
+		return distance;
+	}
+
+	public void setDistance(int distance) {
+		this.distance = distance;
+	}
+
+	
 	public int getTime() {
 		return time;
 	}
@@ -76,12 +92,23 @@ public class BikeBean {
 		this.time = time;
 	}
 
-	@Override
-	public String toString() {
-		return "BikeBean [rentalDate=" + rentalDate + ", gender=" + gender + ", age=" + age + ", useCount=" + useCount
-				+ ", time=" + time + "]";
+	String rentalDate; 	// 대여일자
+	public String getDateMap() {
+		return dateMap;
 	}
-	
+
+	public void setDateMap(String dateMap) {
+		this.dateMap = dateMap;
+	}
+
+	public String getRentID() {
+		return rentID;
+	}
+
+	public void setRentID(String rentID) {
+		this.rentID = rentID;
+	}
+
 	
 
 }

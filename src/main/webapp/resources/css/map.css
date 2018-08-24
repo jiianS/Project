@@ -7,31 +7,33 @@ h2{
 
 #mapContainer {    
     min-height: 100%;
-    width: 100%;
-    /*background-color:  #f5faf9;*/
-      background-color: #FAFAFA;
+    width: 50%;
     position: fixed;
+    float: left;
 }
 
 #mapView{
-    width: 40%;
-    height: 650px;    
+    width: 90%;
+    height: 300px;    
     background-color: dimgrey;
     margin: 0 5%;
-
+    margin-bottom: 30px;
+    border-radius: 6px;
 }
 
 #mapContent{
-    width: 40%;
-    height: 650px;  
+    width: 90%;
+    height: 430px;  
+    clear: both;
     box-shadow:  2px 2px 2px 1px #54795399;
     background-color:  #f5faf9;
     margin: 0 5%;
+    border-radius: 6px;
 }
 
 
 #mapForm{
-    margin: 0 5%;
+    margin: 20px 5%;
     width: 90%;
     height: 100px;
 }
@@ -44,17 +46,41 @@ h2{
     height: 35px;
     display: inline-block;
     text-align-last: center;
-    
 }
 
 #mapDetail{
-   box-shadow:   2px 3px 4px #54795399;
-    margin: 5%;    
+   box-shadow: 2px 3px 4px #54795399;
+    margin: 0 5%;    
     width: 90%;
-    height: 72%;    
-  	overflow-y: scroll;
-  	font-size:14px;
+    height: 68%;
+    cursor: pointer;
+     overflow-y: scroll;
+     font-size: 14px;
+}
+   
+#rentContain{
+    min-height: 100%;
+    width: 50%;
+    float: right;
+    position: relative;
 }
 
-#mapDetail li:hover{cursor : pointer}
-   
+#rentTitle{ margin: 30px 10%;}
+
+.rentSpan{ padding: 50px;}
+
+#rentTitle p .rentSpan{
+    padding: 35px;
+}
+
+.rentbtn{
+    margin-left: 3%;    
+    width: 45%; 
+}
+
+#rentContent{    
+    margin: 0 12.5%;
+    height: 493px;
+    border-radius: 6px;
+}
+

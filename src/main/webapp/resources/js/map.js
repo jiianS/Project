@@ -4,6 +4,7 @@ $(document).ready(function() {
 	        level : 10// 지도의 확대 레벨 
 	    });
 		
+	 
 	selectList();
 	
 	// 마커 클러스터러를 생성하기
@@ -26,7 +27,7 @@ $(document).ready(function() {
    				
    			// 마커에 표시할 인포윈도우를 생성합니다 
    	   	    var infowindow = new daum.maps.InfoWindow({
-   	   	    		 content: "<span style ='font-size:12px;'>" + data.DATA[i].content_nm + "</span>"// 인포윈도우에 표시할 내용
+   	   	    		 content: "<span style ='font-size:12px; text-align:center'>" + data.DATA[i].content_nm + "</span>"// 인포윈도우에 표시할 내용
    	   	    });
    	   	    
    	   	    // 마우스 올리고 아웃되었을때, 이벤트를 추가하는 기능
@@ -100,7 +101,7 @@ $(document).ready(function() {
 		         	
 		         	// 리스트 클릭했을 때, 해당 위치로 옮기기(panTo()) 
 		         	$(".m_li").off().on("click",function(){
-		         		
+		         		$("#rentContain").removeClass('display_none');
 		         		//id 값 받아서 처리
 		         		// for문과 비슷하다고 보면 됨 , data.DATA 속의 value값을 갖고오고, id값이 동일한 경우 원하는 value값을 받아오려함
 		         		var content_id = $(this).attr("data-value");
@@ -110,13 +111,12 @@ $(document).ready(function() {
 		         			  if(value.content_id == content_id){
 		         				  var lat = value.latitude;		// 위도
 		         				  var lng = value.longitude;	// 경도            
-		         				  var content_nm = value.content_nm;
-		         				  
-		         				 panTo(lat, lng);
-		         				 
+		         				  panTo(lat, lng);
 		         			  	} 
 		         		});
 		     		});// 리스트 클릭했을때
+		         	
+		         	
 		         	
 		         });// ajax
 	     	}

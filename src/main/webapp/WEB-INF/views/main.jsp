@@ -97,10 +97,16 @@
 </div>
 
 <!--contect-->
+<div class="overlay display_none">
+	<img src="resources/img/loading.gif">
+</div>
 
 <div class="center" id ="contact">
   <h1 class="center">Contact</h1>
-  <p class="center"><em>Contact Me!</em></p>
+  <p class="center">
+  		<em>Contact me!</em>
+  		
+  </p>
 
    <div>
     <div class="contact_col left contact_info">
@@ -125,7 +131,7 @@
         <textarea id="con_comments" name="con_comments" placeholder="Comment" rows="5"></textarea>
         
         <div class="row">
-          <button id="contact_btn" type="submit">Send</button>
+          <button id="contact_btn" class="contact_btn" type="submit">Send</button>
       </div> 
     </div>
   </div>

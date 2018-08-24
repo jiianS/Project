@@ -6,10 +6,17 @@ $(document).ready(function(){
 		
 		$.ajax({
 			url : "/web/sendMail",	
-			data : {"con_name" : con_name , "con_mail" : con_mail , "con_comments" : con_comments}
+			data : {"con_name" : con_name , "con_mail" : con_mail , "con_comments" : con_comments},
+			beforeSend:function() {
+				$(".overlay").removeClass('display_none');
+			}	//로딩
+			
 		}).done(function(data) {
-			console.log("끝!");
-			console.log(data);
+			$(".overlay").addClass('display_none');
+			alert("메세지가 전송되었습니다.");
+			$("#con_name").val('');
+			$("#con_mail").val('');
+			$("#con_comments").val('');
 		});
 		
 	});

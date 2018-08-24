@@ -18,4 +18,7 @@ public class Reducer extends org.apache.hadoop.mapreduce.Reducer<Text, IntWritab
 		result.set(sum);
 		context.write(key, result);
 	}
+	
+	
+	
 }

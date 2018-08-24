@@ -10,12 +10,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="resources/js/html2canvas.min.js"></script>       
     <script type="text/javascript" src="resources/js/analysis.js"></script>
-      
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
 	<title> Title </title>
 </head>
 
 <body>
+
+	<!-- overlay -->
 	<div class="overlay display_none">
 		<img src="resources/img/loading.gif">
 	</div>
@@ -32,7 +33,7 @@
 	          <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
 	      <a href="/web/analysis" class="bar-item button">
 	          <i class="fa fa-pie-chart"></i> ANALYSIS</a>
-	      <a href="#contact" class="bar-item button">
+	      <a href="/web#contact" class="bar-item button">
 	          <i class="fa fa-envelope"></i> CONTACT</a>
 	    </div>
 	  </div>
@@ -52,7 +53,8 @@
 			    <option>성별</option>
 			</select>
 			<select id="op3" class='op_select'>
-			    <option>이용건수</option>
+				<option>이용건수</option>
+			    <option>이동거리</option>
 			    <option>이동시간</option>
 			</select>
 	           </div>

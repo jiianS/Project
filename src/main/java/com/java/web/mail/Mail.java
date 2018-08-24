@@ -28,7 +28,6 @@ public class Mail {
 	
 	@RequestMapping(value = "/sendMail", method = RequestMethod.GET)
 	public void sendMail(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
 		final String name = req.getParameter("con_name");
 		final String mail = req.getParameter("con_mail");
 		String comments = req.getParameter("con_comments");
@@ -38,20 +37,14 @@ public class Mail {
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper msgHelper = new MimeMessageHelper(message, true, "UTF-8");
-			
 
 			// Subject(메일 제목)
 			msgHelper.setTo(to);
 			msgHelper.setFrom(name, mail);
 			msgHelper.setText(comments);
 			msgHelper.setSubject("[" + name + "] 님이 보낸 메세지 입니다");
-//			message.setSubject("[" + name + "] 님이 보낸 메세지 입니다");
-
-			// Text (comments)
-//			message.setText(comments);
 
 			// send the message
-//			Transport.send(message);
 			mailSender.send(message);
 			System.out.println("message sent successfully...");
 
