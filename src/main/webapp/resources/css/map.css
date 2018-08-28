@@ -69,7 +69,7 @@ h2{
 
 .rentSpan{ padding: 50px;}
 
-#rentTitle p .rentSpan{
+#rentaddr{
     padding: 35px;
 }
 
@@ -81,6 +81,8 @@ h2{
 #rentContent{    
     margin: 0 12.5%;
     height: 493px;
+   
     border-radius: 6px;
 }
+
 

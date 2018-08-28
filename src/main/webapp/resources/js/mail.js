@@ -5,7 +5,7 @@ $(document).ready(function(){
 		var con_comments = $("#con_comments").val();
 		
 		$.ajax({
-			url : "/web/sendMail",	
+			url : "/sendMail",	
 			data : {"con_name" : con_name , "con_mail" : con_mail , "con_comments" : con_comments},
 			beforeSend:function() {
 				$(".overlay").removeClass('display_none');

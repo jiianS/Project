@@ -80,13 +80,14 @@ public class AnaylsisController {
 	
 	@RequestMapping(value = "/mrMapCall", method = RequestMethod.POST)
 	public void mrMapCall(HttpServletRequest req,  HttpServletResponse res) throws Exception {
-		rentID = req.getParameter("path");
+		rentID = req.getParameter("rentID");
 		String year = req.getParameter("year");
-
-		Job job = Job.getInstance(conf, "test");
 		
+		System.out.println("mrMapCall ---> " + rentID +  " ; " + year );
+
+		Job job = Job.getInstance(conf, "test2");
 		mr(job, year, res);
-	
+		
 		job.setMapperClass(MapperMap.class);
 		job.setReducerClass(Reducer.class);
 		job.waitForCompletion(true);
@@ -96,13 +97,11 @@ public class AnaylsisController {
 	
 	
 	public void mr(Job job, String inputPath, HttpServletResponse res) throws Exception {
-		
 		long time = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd_hhmmss");
 		String strTime = dayTime.format(new Date(time));
 		
 		URI inputUri = URI.create("/input/csv/" + inputPath + ".csv");
-		System.out.println(inputUri);
 		URI outputUri = URI.create("/result/" + strTime);
 
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
@@ -120,7 +119,8 @@ public class AnaylsisController {
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
 		job.setJarByClass(this.getClass());
-
+		
+		System.out.println("d여기까지는 오나요???????");
 	}
 	
 	

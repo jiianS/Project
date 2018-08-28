@@ -3,15 +3,18 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    
     <link rel="stylesheet" type="text/css" href="resources/css/web.css">
     <link rel="stylesheet" href="resources/css/analysis.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="resources/js/html2canvas.min.js"></script>       
     <script type="text/javascript" src="resources/js/analysis.js"></script>
     
-	<title> Title </title>
+	<title> Analysis </title>
 </head>
 
 <body>
@@ -21,28 +24,28 @@
 		<img src="resources/img/loading.gif">
 	</div>
 	
-	<!-- Nav bar -->
-	<div class="top">
-	  <div class="bar white" id="navBar">
-	    <a href="/web" class="left wide button">따릉따릉이</a>
-	    
-	    <div class="right">
-	      <a href="/web#about" class="bar-item button">
-	     	 <i class="fa fa-bicycle"></i>ABOUT</a>
-	      <a href="/web/map" class="bar-item button">
-	          <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
-	      <a href="/web/analysis" class="bar-item button">
-	          <i class="fa fa-pie-chart"></i> ANALYSIS</a>
-	      <a href="/web#contact" class="bar-item button">
-	          <i class="fa fa-envelope"></i> CONTACT</a>
-	    </div>
-	  </div>
-	</div>
-	
+<!-- Nav bar -->
+<div class="top">
+  <div class="bar white" id="navBar">
+    <a href="/" class="left wide button">따릉따릉이</a>
+    
+    <div class="right">
+      <a href="/#about" class="bar-item button">
+     	 <i class="fa fa-bicycle"></i>ABOUT</a>
+      <a href="/map" class="bar-item button">
+          <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
+      <a href="/analysis" class="bar-item button">
+          <i class="fa fa-pie-chart"></i> ANALYSIS</a>
+      <a href="/#contact" class="bar-item button">
+          <i class="fa fa-envelope"></i> CONTACT</a>
+    </div>
+  </div>
+</div>
+
 	<!--분석하는 부분!-->
 	
 	<div id="wrap">
-		<h1> Data Analysis</h1>
+		<h1> 내 멋대로 분석하기</h1>
 	
 	   	<div id="step1">
 			<h3>CHOOSE DATA</h3>

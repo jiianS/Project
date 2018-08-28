@@ -4,8 +4,6 @@ import org.apache.hadoop.io.Text;
 
 public class BikeBean {
 
-
-
 	String dateMap; 	// 대여일자 (map page에서 사용할 것)
 	String rentID;		// 대여소 id
 	String gender;		// 성별   _col[4]
@@ -27,7 +25,7 @@ public class BikeBean {
 			
 			/************************************************************************/
 			setDateMap(col[0]);
-			setRentID(rentID);
+			setRentID(AnaylsisController.rentID);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

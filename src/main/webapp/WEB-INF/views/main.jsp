@@ -6,6 +6,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" href="resources/css/web.css">
+    <link rel="stylesheet" type="text/css"  media="only screen and (max-width: 1135px)" href="resources/css/tab.css">
+    <link rel="stylesheet" type="text/css"  media="only screen and (max-width: 670px)" href="resources/css/phone.css">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -19,16 +22,16 @@
 <!-- Nav bar -->
 <div class="top">
   <div class="bar white" id="navBar">
-    <a href="/web" class="left wide button">따릉따릉이</a>
+    <a href="/" class="left wide button">따릉따릉이</a>
     
     <div class="right">
-      <a href="/web#about" class="bar-item button">
+      <a href="/#about" class="bar-item button">
      	 <i class="fa fa-bicycle"></i>ABOUT</a>
-      <a href="/web/map" class="bar-item button">
+      <a href="/map" class="bar-item button">
           <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
-      <a href="/web/analysis" class="bar-item button">
+      <a href="/analysis" class="bar-item button">
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
-      <a href="/web#contact" class="bar-item button">
+      <a href="/#contact" class="bar-item button">
           <i class="fa fa-envelope"></i> CONTACT</a>
     </div>
   </div>
@@ -37,17 +40,16 @@
 <!-- header Img -->
 <header class="bgImg">
   <div class="left startDiv">
-    <span style="font-size: 35px"> 따르릉 따르릉 비켜주세요 ~
-    </span><br>
-    
-    <span style="font-size: 35px">서울 공공자전거</span>
-    <span style="color: forestgreen; font-size: 45px; "> 따릉이</span><br>
-    <span style="font-size: 35px">지나갑니다 ~</span>
+    <span> 따르릉 따르릉 비켜주세요 ~ </span><br>
+    <span>서울 공공자전거</span>
+    <span style="color: forestgreen"> 따릉이</span><br>
+    <span>지나갑니다 ~</span>
     <p style="margin: 20px 0;">
     <a href="/web#about" id="goAbout" class="button left"
             style="font-size:20px; background-color: #f4f4f4">
     About 따릉따릉이 >></a></p>
   </div> 
+  
   <div class="icon" style="left:5px; bottom:5px;">
     <i class="fa fa-facebook-official"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>    
@@ -100,7 +102,6 @@
 <div class="overlay display_none">
 	<img src="resources/img/loading.gif">
 </div>
-
 <div class="center" id ="contact">
   <h1 class="center">Contact</h1>
   <p class="center">

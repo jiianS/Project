@@ -12,6 +12,7 @@
 		fs.defaultFS=hdfs://192.168.1.12:9000
 	</hdp:configuration>
 
+	<!-- mail sender [보내고자하는 이메일 계정과 pwd 입력하기 / host와 port는 해당 계정으로 지정하기] -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />

@@ -24,7 +24,7 @@ $(document).ready(function(){
 		// 맵리듀스 돌리는 파트!
 		$.ajax({
 			type :"post",
-			url : "/web/mrCall",
+			url : "/mrCall",
 			data : {"path" : op1, "check":check},
 			
 			beforeSend:function() {
@@ -36,12 +36,14 @@ $(document).ready(function(){
 			
 			// 리듀스 된 파일을 차트화 하기
 			$.ajax({
-				url  : "/web/getResult",
+				url  : "/getResult",
 				data : {"mrName" : mrName}	// 리듀스 된 파일명
 			}).done(function (data) {
 				$(".overlay").addClass('display_none');
-				
+								
 				var result = data.result;
+				
+				console.log(result)
 				google.charts.load('current', {'packages':['corechart','bar']});
 			    google.charts.setOnLoadCallback(drawChart);
 			    
@@ -80,7 +82,7 @@ $(document).ready(function(){
 				html2canvas(document.querySelector("#wrap")).then(function(canvas){
 					$.ajax({
 						type: "post",
-						url: "/web/getImg",
+						url: "/getImg",
 						data: {"imgData": canvas.toDataURL() , "fileNm" : mrName}
 					}).done(function(){ 
 						alert("저장되었습니다.")

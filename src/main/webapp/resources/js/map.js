@@ -27,7 +27,7 @@ $(document).ready(function() {
    				
    			// 마커에 표시할 인포윈도우를 생성합니다 
    	   	    var infowindow = new daum.maps.InfoWindow({
-   	   	    		 content: "<span style ='font-size:12px; text-align:center'>" + data.DATA[i].content_nm + "</span>"// 인포윈도우에 표시할 내용
+   	   	    		 content: "<span style ='font-size:12px; text-align: center>" + data.DATA[i].content_nm + "</span>"// 인포윈도우에 표시할 내용
    	   	    });
    	   	    
    	   	    // 마우스 올리고 아웃되었을때, 이벤트를 추가하는 기능
@@ -38,7 +38,6 @@ $(document).ready(function() {
    		
    		// 클러스터러에 마커들을 추가합니다
         clusterer.addMarkers(markers);			
-
    	});
 	
    	
@@ -83,40 +82,105 @@ $(document).ready(function() {
 	         var guVal = this.value;
 
 	         if (guVal == "지역구 선택하기"){
-	        	 map.setLevel(9);	//mapLevel을 3으로 맞추기
+	        	 map.setLevel(9);	
 	     	}else{
 		         $.ajax({
 		         	url : "resources/data/seoulbicylce.json"            	
 		         }).done(function(data){
-	
-		         	var guNm;         	
-		         	for(var i = 0; i < data.DATA.length; i++){
-		         		guNm = data.DATA[i].addr_gu;
-		         		
-		             	if(guVal == guNm){                		
-		             		$("#m_ul").append("<li class='m_li' data-value='" + data.DATA[i].content_id + "'> "+data.DATA[i].content_nm+"</li>");
+		        	 console.log(data)
+		        	// [선택한 구]이름이 같을 때-> 해당되는 '구'의 대여소명 리스트  
+		        	for(var i = 0; i < data.DATA.length; i++){
+		             	if(guVal == data.DATA[i].addr_gu){                		
+		             		$("#m_ul").append("<li class='m_li' data-value='" + data.DATA[i].content_id + "'> "+  data.DATA[i].content_nm +"</li>");
 		             		$("#m_ul").append("<span> "+data.DATA[i].new_addr+"</span>");
-		             	}              
+		             	} 
 		         	}
-		         	
-		         	// 리스트 클릭했을 때, 해당 위치로 옮기기(panTo()) 
+		        	 var content_id ;
+		        	 
+		        	panTo(data.DATA[2].latitude ,data.DATA[2].longitude)
+		         	// 리스트 클릭했을 때, 해당 위치로 옮기기(panTo())
+		        	// id 값 받아서 처리 하기
+		        	
 		         	$(".m_li").off().on("click",function(){
 		         		$("#rentContain").removeClass('display_none');
-		         		//id 값 받아서 처리
+		         		$("#rentName").empty();
+		         		$("#rentaddr").empty();
+		         		$("#cradel_cnt").empty();
+		         		
+		         		
 		         		// for문과 비슷하다고 보면 됨 , data.DATA 속의 value값을 갖고오고, id값이 동일한 경우 원하는 value값을 받아오려함
-		         		var content_id = $(this).attr("data-value");
+		         		content_id = $(this).attr("data-value");	// 대여소 아이디값
 		         		
 		         		$.each(data.DATA, function( key, value ) {
-		         			
-		         			  if(value.content_id == content_id){
-		         				  var lat = value.latitude;		// 위도
-		         				  var lng = value.longitude;	// 경도            
-		         				  panTo(lat, lng);
-		         			  	} 
-		         		});
+		         			    if(value.content_id == content_id){
+		         				  panTo( value.latitude,  value.longitude);
+		         				  
+		         				$("#rentName").append(value.content_nm);
+		         				$("#cradel_cnt").append(value.cradle_count);
+		         				$("#rentaddr").append(value.new_addr);
+		         			  }	
+		         		});	// 리스트 클릭했을 때, 행해지는 function
+		         		
 		     		});// 리스트 클릭했을때
-		         	
-		         	
+		        	
+		        	
+		        	 $(".rentbtn").on("click",function(){
+      			    	console.log("clikd  - -"+ $(this).text());
+      			    	var year =  $(this).text();
+      			    	$.ajax({
+      			    		type : "post",
+ 		         			url:"/mrMapCall",
+ 		         			data : {"rentID" :content_id, "year" : year},
+ 		        			beforeSend:function() {
+ 		        				$(".overlay").removeClass('display_none');
+ 		        			},
+ 		        			error : function(error) {
+ 		        		        alert("Error!"); 
+ 		        		    }
+ 		        		}).done(function(data) {
+ 		         			$.ajax({
+ 		         				url  : "/getResult",
+ 		        				data : {"mrName" : data.name}	// 리듀스 된 파일명
+ 		         			}).done(function(data) {
+ 		         				$(".overlay").addClass('display_none');
+ 		         				
+ 		         				var result = data.result;
+	    		    				google.charts.load('current', {'packages':['corechart','bar']});
+	    		    			    google.charts.setOnLoadCallback(drawChart);
+	    		    			    
+	    		    			    function drawChart() {
+	    		    			    	var chartData = new google.visualization.DataTable();
+	    		    			    	
+	    		    			    	// 차트 컬럼 설정
+	    		    			    	chartData.addColumn("string", "Option");
+	    		    		  			chartData.addColumn("number", "이용건수");
+	    		    				
+	    		    		  			// 차트 데이터 설정
+	    		    			  		$.each(result, function(index, value) {
+	    		    			  			var row = [];
+	    		    			  			for(var i = 0; i < 2; i++){
+	    		    			  				row[i] = (i != 0) ? Number(value[i]) : value[i];
+	    		    			  				console.log(row[i])
+	    		    			  			}
+	    		    			  				chartData.addRows([ row ]);
+	    		    			  			});
+	    		    					
+	    		    			  		var option = {
+	    		    				   			    chartType: 'BarChart',
+	    		    				   			 	dataTable: chartData,
+	    		    				   			    options: {	vAxis: {title: "월별"},
+	    		    							   			   	hAxis: {title: "이용건수"}
+	    		    				   			    		},
+	    		    				   			    containerId : 'rentContent'
+	    		    				   			  };
+	    		    			  		var wrapper = new google.visualization.ChartWrapper(option);
+	    		    			  		wrapper.draw();
+	    		    			     };	//drawChart 
+								}) ;
+								});
+ 		         			
+      			    }); // 2017,2018 눌렀을때
+	         		
 		         	
 		         });// ajax
 	     	}

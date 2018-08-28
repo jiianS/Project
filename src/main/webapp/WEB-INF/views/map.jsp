@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/web.css">
     <link rel="stylesheet" type="text/css" href="resources/css/map.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2a6f7408c186c46a63cc30d539f1e1d9&libraries=services,clusterer,drawing"></script>
 	<script type="text/javascript" src = "resources/js/map.js"></script>
@@ -16,24 +17,28 @@
 </head>
 
 <body>
-
+ <!-- overlay -->
+<div class="overlay display_none">
+	<img src="resources/img/loading.gif">
+</div>
 <!-- Nav bar -->
 <div class="top">
   <div class="bar white" id="navBar">
-    <a href="/web" class="left wide button">따릉따릉이</a>
+    <a href="/" class="left wide button">따릉따릉이</a>
     
     <div class="right">
-      <a href="/web#about" class="bar-item button">
+      <a href="/#about" class="bar-item button">
      	 <i class="fa fa-bicycle"></i>ABOUT</a>
-      <a href="/web/map" class="bar-item button">
+      <a href="/map" class="bar-item button">
           <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
-      <a href="/web/analysis" class="bar-item button">
+      <a href="/analysis" class="bar-item button">
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
-      <a href="/web#contact" class="bar-item button">
+      <a href="/#contact" class="bar-item button">
           <i class="fa fa-envelope"></i> CONTACT</a>
     </div>
   </div>
 </div>
+
 
 <div id="mapContainer">
    <h2>따릉이 대여소는 어디에?</h2>
@@ -50,15 +55,17 @@
    </div>
  </div>
      
-<div id="rentContain" class ="display_none">
+      
+<div id ="rentContain" class ="display_none">
     <h2 >자세히 알아보기</h2>
     <div id ="rentTitle">
         <span>대여소명</span>
-        <span id ="rentName" class="rentSpan"> </span>
-        <p> 
-            <span>대여소위치</span> <span id="rentaddr" class="rentSpan">서울시 구로구 고척2동~~~~ </span>
-        </p>
+        <span id ="rentName" class="rentSpan"> </span><br>
+        <span>거치대수</span>
+        <span id ="cradel_cnt" class="rentSpan"> </span><br>
+        <span>대여소위치</span> <span id="rentaddr" class="rentSpan"></span>
         <hr>
+        
         <div id="rentcheck">
             <p> 
 	            <span>2017, 2018년 월별 이용건수 분석</span><br>
@@ -70,7 +77,7 @@
          <hr>
         </div>  
       </div>
-            
+
     <div id="rentContent" style="background-color: aliceblue"> </div>
 </div>
    
