@@ -1,18 +1,10 @@
 $(document).ready(function() {
 	 var map = new daum.maps.Map(document.getElementById('mapView'), { // 지도를 표시할 div
 		 	center : new daum.maps.LatLng(37.524071, 127.02179), // 지도의 중심좌표 
-	        level : 10// 지도의 확대 레벨 
+	        level : 5// 지도의 확대 레벨 
 	    });
-		
-	 
+		 
 	selectList();
-	
-	// 마커 클러스터러를 생성하기
-    var clusterer = new daum.maps.MarkerClusterer({
-        map: map,				 // 마커들을 클러스터로 관리하고 표시할 지도 객체 
-        averageCenter: true,	 // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-        minLevel: 9			 // 클러스터 할 최소 지도 레벨 
-    });
 	
     // jquery 이용하여 데이터를 가져와 마커를 생성하고 클러스터러 객체에 넘겨주기
    	$.get("resources/data/seoulbicylce.json").done(function (data) {
@@ -24,20 +16,18 @@ $(document).ready(function() {
    				map: map,	 // 마커를 표시할 지도
    			 	position : new daum.maps.LatLng(data.DATA[i].latitude, data.DATA[i].longitude)
    			});
-   				
+
    			// 마커에 표시할 인포윈도우를 생성합니다 
    	   	    var infowindow = new daum.maps.InfoWindow({
-   	   	    		 content: "<span style ='font-size:12px; text-align: center>" + data.DATA[i].content_nm + "</span>"// 인포윈도우에 표시할 내용
+   	   	    		 content: "<span style ='padding-left:10px; font-size:12px; text-align: center; '> " + data.DATA[i].content_nm + "</span>"// 인포윈도우에 표시할 내용
    	   	    });
-   	   	    
+
    	   	    // 마우스 올리고 아웃되었을때, 이벤트를 추가하는 기능
    	   	    daum.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
    	   	    daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
    	   	    return marker;
    		});
    		
-   		// 클러스터러에 마커들을 추가합니다
-        clusterer.addMarkers(markers);			
    	});
 	
    	
@@ -82,7 +72,7 @@ $(document).ready(function() {
 	         var guVal = this.value;
 
 	         if (guVal == "지역구 선택하기"){
-	        	 map.setLevel(9);	
+	        	 map.setLevel(3);	
 	     	}else{
 		         $.ajax({
 		         	url : "resources/data/seoulbicylce.json"            	
@@ -120,7 +110,6 @@ $(document).ready(function() {
 		         				$("#rentaddr").append(value.new_addr);
 		         			  }	
 		         		});	// 리스트 클릭했을 때, 행해지는 function
-		         		
 		     		});// 리스트 클릭했을때
 		        	
 		        	
@@ -181,7 +170,6 @@ $(document).ready(function() {
  		         			
       			    }); // 2017,2018 눌렀을때
 	         		
-		         	
 		         });// ajax
 	     	}
 		});// select_Option 값에 따라 리스트 변경하기

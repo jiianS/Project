@@ -6,9 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link rel="stylesheet" href="resources/css/web.css">
-    <link rel="stylesheet" type="text/css"  media="only screen and (max-width: 1135px)" href="resources/css/tab.css">
-    <link rel="stylesheet" type="text/css"  media="only screen and (max-width: 670px)" href="resources/css/phone.css">
-    
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -33,28 +31,32 @@
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
       <a href="/#contact" class="bar-item button">
           <i class="fa fa-envelope"></i> CONTACT</a>
+	  <a href="/#contact" class="bar-item button">
+          <i class="fa fa-envelope"></i> CONTACT</a>      
     </div>
   </div>
 </div>
 
+
 <!-- header Img -->
-<header class="bgImg">
+<header class="bgImg bg1">
   <div class="left startDiv">
     <span> 따르릉 따르릉 비켜주세요 ~ </span><br>
     <span>서울 공공자전거</span>
     <span style="color: forestgreen"> 따릉이</span><br>
     <span>지나갑니다 ~</span>
     <p style="margin: 20px 0;">
-    <a href="/web#about" id="goAbout" class="button left"
+    <a href="/#about" id="goAbout" class="button left"
             style="font-size:20px; background-color: #f4f4f4">
     About 따릉따릉이 >></a></p>
+    
   </div> 
   
   <div class="icon" style="left:5px; bottom:5px;">
     <i class="fa fa-facebook-official"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>    
     <i class="fa fa-twitter w3-hover-opacity"></i>
-    
+
   </div>
 </header>
 
@@ -108,7 +110,6 @@
   		<em>Contact me!</em>
   		
   </p>
-
    <div>
     <div class="contact_col left contact_info">
       <p><span class='contact_icon'><img src="resources/img/placeholder.svg"> </span>
@@ -137,7 +138,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- Footer -->
 <footer class="center">

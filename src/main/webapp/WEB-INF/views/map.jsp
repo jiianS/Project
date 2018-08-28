@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="resources/css/web.css">
     <link rel="stylesheet" type="text/css" href="resources/css/map.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2a6f7408c186c46a63cc30d539f1e1d9&libraries=services,clusterer,drawing"></script>
@@ -54,8 +55,7 @@
        </div>
    </div>
  </div>
-     
-      
+          
 <div id ="rentContain" class ="display_none">
     <h2 >자세히 알아보기</h2>
     <div id ="rentTitle">
