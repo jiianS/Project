@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +23,7 @@
     <a href="/" class="left wide button">따릉따릉이</a>
     
     <div class="right">
-      <a href="/#about" class="bar-item button">
+      <a href="/main#about" class="bar-item button">
      	 <i class="fa fa-bicycle"></i>ABOUT</a>
       <a href="/map" class="bar-item button">
           <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
@@ -31,7 +31,7 @@
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
       <a href="/#contact" class="bar-item button">
           <i class="fa fa-envelope"></i> CONTACT</a>
-	  <a href="/#contact" class="bar-item button">
+	  <a href="/main#contact" class="bar-item button">
           <i class="fa fa-envelope"></i> CONTACT</a>      
     </div>
   </div>
@@ -46,7 +46,7 @@
     <span style="color: forestgreen"> 따릉이</span><br>
     <span>지나갑니다 ~</span>
     <p style="margin: 20px 0;">
-    <a href="/#about" id="goAbout" class="button left"
+    <a href="/main#about" id="goAbout" class="button left"
             style="font-size:20px; background-color: #f4f4f4">
     About 따릉따릉이 >></a></p>
     
@@ -108,7 +108,6 @@
   <h1 class="center">Contact</h1>
   <p class="center">
   		<em>Contact me!</em>
-  		
   </p>
    <div>
     <div class="contact_col left contact_info">
@@ -123,14 +122,14 @@
     <div class="contact_col left">
       <div>
         <div class="form_div left">
-          <input class="form_input" id="con_name" name="con_name" placeholder="Name" type="text" required>
+          <input class="form_input" id="con_name" name="con_name"  type="text" value=" ${sessionScope.user.userName}" required>
         </div>
         <div class="form_div left">
-          <input class="form_input" id="con_mail" name="con_mail" placeholder="Email" type="email" required>
+          <input class="form_input" id="con_mail" name="con_mail" type="email" value=" ${sessionScope.user.userEmail}" required>
         </div>
       </div>
        
-        <textarea id="con_comments" name="con_comments" placeholder="Comment" rows="5"></textarea>
+        <textarea id="con_comments" name="con_comments" placeholder="Comment" rows="5" required></textarea>
         
         <div class="row">
           <button id="contact_btn" class="contact_btn" type="submit">Send</button>

@@ -22,6 +22,7 @@
 <div class="overlay display_none">
 	<img src="resources/img/loading.gif">
 </div>
+
 <!-- Nav bar -->
 <div class="top">
   <div class="bar white" id="navBar">
@@ -40,15 +41,15 @@
   </div>
 </div>
 
-
 <div id="mapContainer">
    <h2>따릉이 대여소는 어디에?</h2>
+
    <div id="mapView" class="left"></div>    
    <div id="mapContent">
        <div id="mapForm">
            <h3>원하는 지역구를 선택하세요</h3>
-           <select name="gu" id="gu" title="원하는 지역구를 선택합니다.">
-           </select>
+           <button type="button" class="contact_btn" id="geolocate"> 나 어디있게? </button>	
+           <select name="gu" id="gu" title="원하는 지역구를 선택합니다."></select>
        </div>
        <div id="mapDetail">
        		<ul id="m_ul"> </ul>

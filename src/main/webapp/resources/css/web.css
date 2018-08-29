@@ -16,14 +16,9 @@ header, footer, nav, section {
 	display: block;
 }
 
-h2 {
-	color: #555555;
-}
+h2 {color: #555555;}
 
-a {
-	text-decoration: none;
-	color: #808080;
-}
+a {	text-decoration: none;	color: #808080;}
 
 .top {
 	position: fixed;
@@ -248,6 +243,7 @@ a {
 	position: relative;
 	padding: 0 10px;
 	border-radius: 4px;
+	color : #606060;
 }
 
 #con_comments {
@@ -256,6 +252,7 @@ a {
 	height: 45px;
 	font-family: 'Jeju Gothic', sans-serif;
 	border-radius: 4px;
+	color : #606060;
 }
 
 .contact_btn {

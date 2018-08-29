@@ -1,6 +1,5 @@
 $(document).ready(function(){
-
-    /*sign_up*/
+    /*modal*/
 	$("#join").on("click", function() {
 		$("#joinModal").css("display","block");
         $("#layer").css("display","block");
@@ -11,54 +10,109 @@ $(document).ready(function(){
         $("#layer").css("display","block");
 	});
 
-        
-    /*button 취소 & layer 선택시 display-none*/	
-    $("#layer").on("click", function(){  layerout();  });
-    $(".btn-danger").on("click", function(){  layerout();  });
+	 /* button 취소 & layer 선택시 display-none */
+	$("#layer").on("click", function() {
+		layerout();
+		$("form").each(function() {	this.reset(); })
+	});
+	$(".btn-danger").on("click", function() {
+		layerout();
+		$("form").each(function() {	this.reset();})
+	});
     
-    //join
-	$("#joinForm").submit(function(e) {
+    // join
+	$("#join_submit").on('click', function(e) {
 		e.preventDefault();	
-		$.ajax({
-			type:"post",
-			url :"userInsert",
-			data : {
-				"userEmail" : $("#joinForm input").eq(0).val(),
-				"userName" 	: $("#joinForm input").eq(1).val(),
-				"userPwd" 	: $("#joinForm input").eq(2).val(),
-				"addrNo" 	: $("#joinForm input").eq(4).val(),
-				"addr" 		: $("#joinForm input").eq(5).val(),
-			}
-		}).done(function(data) {
-			var d = JSON.parse(data);
-			console.log("insert Join : " + d);
-			alert(d.msg);
-			if(d.status == 1) {
-                location.href="admin";
-             }
-		});
+			$.ajax({
+				type:"post",
+				url :"userInsert",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				data : {
+					"userEmail" : $("#email").val(),
+					"userName" 	: $("#name").val(),
+					"userPwd" 	: $("#password").val(),
+					"addrNo" 	: $("#sample6_postcode").val(),
+					"addr" 		: $("#sample6_address").val(),
+				}
+			}).done(function(data) {
+				var d = JSON.parse(data);
+				console.log("insert Join : " + d);
+				alert(d.msg);
+				if(d.status == 1) {
+	                location.href="/";
+	             }
+			});
 	});//form submit
     
     
 	//login
 	$("#loginForm").submit(function(e) {
-		e.preventDefault();	
+		e.preventDefault();
+		
 		$.ajax({
 			type:"post",
-			url :"userInsert",
+			url :"userSelect",
+			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 			data : {
-				"userId" : $("#loginForm input").eq(0).val(),
-				"userPassword" : $("#loginForm input").eq(1).val()
+				"userEmail" :$("#id").val(),
+				"userPwd" 	: $("#pwd").val()
 			}
 		}).done(function(data) {
-			var d = JSON.parse(data);
-			console.log("insert Join : " + d);
+			 var d = JSON.parse(data);
 			alert(d.msg);
+			
 			if(d.status == 1) {
-                location.href="admin";
+			    location.href="/main";
              }
 		});
 	});//form submit
+	
+	// logout
+	$("#logout").on("click",function(){ logout();});
+	
+    /*myPage & update*/
+    $("#mypage").on("click", function() {
+		$("#joinModal").css("display","block");
+        $("#layer").css("display","block");
+        $("#join_submit").addClass("display_none");
+        $("#update_submit").removeClass("display_none");
+ 	
+	   	 $.post("userCheck").done(function(data) {
+	 		 var d = JSON.parse(data)
+	 		 console.log(d['userEmail'])
+	 		$("#email").val(d['userEmail']),
+	 		$("#name").val(d['userName']),
+	 		$("#sample6_postcode").val(d['addrNo']),
+	 		$("#sample6_address").val(d['addr'])
+	 		$(".form-control").attr("readonly",true);
+	 	});
+	   	 
+	  	$("#update_submit").on("click", function(e) {
+	  		e.preventDefault();
+	   		$(".form-control").attr("readonly",false);
+	   		$("#email").attr("readonly",true);
+	 		$("#name").attr("readonly",true);
+	 		 
+	 		$.ajax({
+//	 			type:post,
+	 			url:'userUpdate',
+	 			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+	 			data : {
+					"userEmail" : $("#email").val(),
+					"userPwd" 	: $("#password").val(),
+					"addrNo" 	: $("#sample6_postcode").val(),
+					"addr" 		: $("#sample6_address").val(),
+	 			}
+	 		}).done(function(data) {
+	 			var d = JSON.parse(data)
+	 			alert(d.msg);
+	 			console.log("update" + data)
+			});
+	 		
+		});
+	});
+        
+	
 	
 });
 
@@ -67,6 +121,54 @@ function layerout(){
    $("#joinModal").css("display","none");
    $("#loginModal").css("display","none");
 }
+
+function logout() {
+	$.ajax({
+		url:"logout"
+	}).done(function(data) {
+		console.log(data)
+		var d = JSON.parse(data)
+		alert(d.msg)
+		location.href="/";
+	});
+}
+
+//아이디 비번 체크 함수
+function checkId() {
+	var checkId = $("#email").val();
+	
+	$.ajax({
+		url : "checkId",
+		data:{ checkId : checkId },
+		success : function(data) {
+			var d = JSON.parse(data)
+		if(d.status == '1'){		
+				$("#email").css("background-color", "#fdffe4");
+				$("#email").css("color", "#555555");
+			}else if(d.status == '0'){		
+				//아이디 확인 -> 가입 불가
+				alert(d.msg);
+				$("#email").css("background-color", "#BA2B2B");
+			}		
+		}
+	});
+}
+
+//재입력 비밀번호 체크하여 가입버튼 비활성화 또는 맞지않음을 알림.
+function checkPwd() {
+    var checkPwd = $('#password').val();
+    var rePwd = $('#repwd').val();
+
+   if (checkPwd == rePwd) {
+        $("#repwd").css("background-color", "#fdffe4");
+        $("#join_submit").prop("disabled", false );
+    } else if (checkPwd != repwd) {            
+        $("#repwd").css("background-color", "#BA2B2B");
+        $("#join_submit").prop("disabled", true);
+        
+    }
+}
+
 
 //다음주소 api
 function sample6_execDaumPostcode() {
@@ -108,47 +210,6 @@ function sample6_execDaumPostcode() {
     }).open();
 }
 
-
-//아이디 비번 체크 함수
-function checkId() {
-	var checkId = $("#id").val();
-	console.log("check ID : " + checkId)	
-	$.ajax({
-		url : "checkId",
-		data:{ checkId : checkId },
-		success : function(data) {
-			var d = JSON.parse(data)
-			console.log("datat : :  " + d )
-			
-			if(d.status == "1"){				
-				//아이디 확인 -> 가입 가능한경우
-				$("#id").css("background-color", "#dfebff");
-				
-			}else if(d.status =="0"){		
-				//아이디 확인 -> 가입 불가
-				$("#id").css("background-color", "#f570a3");
-				
-			}		
-		}
-
-	});		
-}
-
-
-//재입력 비밀번호 체크하여 가입버튼 비활성화 또는 맞지않음을 알림.
-function checkPwd() {
-    var checkPwd = $('#pwd').val();
-    var rePwd = $('#repwd').val();
-
-   if (checkPwd == rePwd) {
-        $("#repwd").css("background-color", "#dfebff");
-        $("#submit").prop("disabled", false );
-    } else if (checkPwd != repwd) {            
-        $("#repwd").css("background-color", "#f570a3");
-        $("#submit").prop("disabled", true);
-        
-    }
-}
 
 
 

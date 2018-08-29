@@ -25,12 +25,12 @@ import net.sf.json.JSONSerializer;
 @Controller
 public class HomeController {
 	
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String home() {
 		return "home";
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping("/main")
 	public String main() {
 		return "main";
 	}
@@ -44,7 +44,6 @@ public class HomeController {
 	public String analysis() {
 		return "analysis";
 	}
-
 
 	
 }

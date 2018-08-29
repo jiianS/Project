@@ -1,9 +1,8 @@
 h2{
- margin-top: 120px;
+	margin-top: 120px;
     margin-left: 5%;
     color: #acacac;
 }
-
 
 #mapContainer {    
     min-height: 100%;
@@ -38,6 +37,10 @@ h2{
     height: 100px;
 }
 
+#mapForm button{
+	width:30%; height: 35px;
+	display: inline-block; margin: 0 5%
+}
 
 #gu{
     width: 60%;
@@ -85,4 +88,5 @@ h2{
     border-radius: 6px;
 }
 
+#infowindow{width:160px;text-align:center;padding:6px 0; font-size:12px }
 
