@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
     monthList();
     
@@ -75,25 +74,30 @@ $(document).ready(function(){
 			  		wrapper.draw();
 			     };	//drawChart 
 			});
-				
-			
+
 			$("#step4 #img_btn").on("click",function(){
 			
-				html2canvas(document.querySelector("#wrap")).then(function(canvas){
-					$.ajax({
-						type: "post",
-						url: "/getImg",
-						data: {"imgData": canvas.toDataURL() , "fileNm" : mrName}
-					}).done(function(){ 
-						alert("저장되었습니다.")
-					});
-				});
+//				html2canvas(document.querySelector("#wrap")).then(function(canvas){
+//					$.ajax({
+//						type: "post",
+//						url: "/getImg",
+//						data: {"imgData": canvas.toDataURL() , "fileNm" : mrName}
+//					}).done(function(){ 
+//						alert("저장되었습니다.")
+//					});
+//				});
+				
+				//바로 다운 가능하게 하는 
+			      html2canvas(document.querySelector("#chart_body")).then(function(canvas) {
+			            var url = canvas.toDataURL();
+			            var filePath = window.prompt("Enter a file URL",url);
+			              $('<a></a>').attr('download', "img.png").attr('href', url)[0].click();
+			     });
 			});
 			
 			$("#step4 #clear_btn").on("click",function(){
 				$("#chart_body").empty();
 			});
-							
 			
 		});
 	});// btn click

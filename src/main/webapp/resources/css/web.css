@@ -12,9 +12,9 @@ html, body {
 	color: #333333;
 }
 
-header, footer, nav, section {
-	display: block;
-}
+header, footer {display: block; clear: both }
+section{clear: both;}
+
 
 h2 {color: #555555;}
 
@@ -30,21 +30,15 @@ a {	text-decoration: none;	color: #808080;}
 	box-shadow: 0px 2px 1px #54795399;
 }
 
-.wide {
-	letter-spacing: 4px;
-}
+.wide {	letter-spacing: 4px;}
 
-.left {
-	float: left
-}
+.left {	float: left}
 
 .right {
 	float: right
 }
 
-.center {
-	text-align: center;
-}
+.center {	text-align: center; }
 
 .txtLeft {
 	text-align: left;
@@ -58,7 +52,7 @@ a {	text-decoration: none;	color: #808080;}
 	outline: 0
 }
 
-/**********button************************/
+/*button*/
 .button {
 	border: none;
 	display: inline-block;
@@ -69,15 +63,11 @@ a {	text-decoration: none;	color: #808080;}
 	white-space: nowrap;
 }
 
-.button:hover {
-	background-color: #cecece;
-}
+.button:hover {	background-color: #cecece;}
 
-.white {
-	background-color: #ffffff
-}
+.white {	background-color: #ffffff }
 
-/**************************************/
+/*back*/
 .bgImg {
 	background-position: center;
 	background-size: cover;
@@ -86,13 +76,8 @@ a {	text-decoration: none;	color: #808080;}
 	min-height: 100%;
 }
 
-.bg0 {
-	background-image: url("../img/b2.jpg");
-}
-
-.bg1 {
-	background-image: url("../img/b1.jpg");
-}
+.bg0 {	background-image: url("../img/b2.jpg");}
+.bg1 {	background-image: url("../img/b1.jpg");}
 
 /* Banner */
 #banner {
@@ -128,6 +113,11 @@ a {	text-decoration: none;	color: #808080;}
 	font-weight: bold;
 }
 
+.startDiv span{
+	font-size:25px;
+	
+}
+
 #goAbout {
 	width: auto;
 	margin-top: 20px;
@@ -143,23 +133,17 @@ a {	text-decoration: none;	color: #808080;}
 	font-size: 25px
 }
 
-.fa {
-	padding: 5px;
-}
+.fa {padding: 5px;}
 
 .icon .fa:hover {
-	cursor: pointer;
-	opacity: 0.6
+	cursor: pointer;	opacity: 0.6
 }
 
 /*************about****************/
-#about {
-	margin-top: 130px;
-	padding: 60px 30px;
-}
+#about {margin-top: 130px; padding: 60px 30px;}
 
 .aboutDiv {
-	margin-top: 60px;
+	margin-top: 90px;
 	padding: 0 20px;
 	height: 300px;
 }
@@ -192,11 +176,21 @@ a {	text-decoration: none;	color: #808080;}
 }
 
 .display_none {	display: none; }
-
 .overlay img {	margin-top: 20%; margin-left: 40%}
 
+/****** map *********/
 
-/***********contact *************/
+#mapsection{ 
+	background-color:#eaeeec;
+	min-height: 100%;	
+}
+
+#analSection{ 
+	background-color:#fcfcfc;
+	min-height: 100%;	
+}
+
+/*contact*/
 #contact {
 	padding: 50px 0;
 	margin: 50px 5%;
@@ -213,9 +207,7 @@ a {	text-decoration: none;	color: #808080;}
 	padding-left: 7%;
 }
 
-.contact_info {
-	padding: 23px 20px;
-}
+.contact_info {	padding: 23px 20px;}
 
 .contact_icon {
 	margin: 5px 0;
@@ -270,19 +262,22 @@ a {	text-decoration: none;	color: #808080;}
 	cursor: pointer;
 }
 
-/*********footer***********/
+#contact_btn:hover {
+	background: #606060; color: #fdfdfd;
+	
+}
+
+/*footer*/
 footer {
 	clear: both;
 	background-color: #14291f;
 	color: #dfdfdf;
 	padding: 90px 0;
 }
-
 footer div {
 	color: #b2b2b2;
 	font-size: 22px;
 }
-
 footer div .fa:hover {
 	cursor: pointer;
 	opacity: 0.6

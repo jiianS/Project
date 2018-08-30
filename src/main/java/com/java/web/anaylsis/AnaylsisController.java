@@ -171,7 +171,7 @@ public class AnaylsisController {
 		res.getWriter().write(json.toString());
 	}
 
-	/*** 이미지 저장하기 *********/
+	/*** 이미지 저장하기 (스크립트에서 바로 저장하게 바꿈)*********/
 	@RequestMapping(value = "/getImg", method = RequestMethod.POST)
 	public void getimg(HttpServletRequest req, HttpServletResponse res) throws IOException {
 		String imgData = req.getParameter("imgData");

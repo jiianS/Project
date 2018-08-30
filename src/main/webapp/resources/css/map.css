@@ -1,13 +1,13 @@
-h2{
-	margin-top: 120px;
+#mapsection h2{
+	margin-top: 100px;
     margin-left: 5%;
-    color: #acacac;
+    color: #ffffff;
 }
 
 #mapContainer {    
     min-height: 100%;
+    margin-left: 8%;
     width: 50%;
-    position: fixed;
     float: left;
 }
 
@@ -22,7 +22,7 @@ h2{
 
 #mapContent{
     width: 90%;
-    height: 430px;  
+    height: 470px;  
     clear: both;
     box-shadow:  2px 2px 2px 1px #54795399;
     background-color:  #f5faf9;
@@ -53,17 +53,17 @@ h2{
 
 #mapDetail{
    box-shadow: 2px 3px 4px #54795399;
-    margin: 0 5%;    
+    margin: 5px 5%;    
     width: 90%;
     height: 68%;
     cursor: pointer;
-     overflow-y: scroll;
-     font-size: 14px;
+    overflow-y: scroll;
+    font-size: 14px;
 }
    
 #rentContain{
     min-height: 100%;
-    width: 50%;
+    width: 45%;
     float: right;
     position: relative;
 }
@@ -78,15 +78,25 @@ h2{
 
 .rentbtn{
     margin-left: 3%;    
-    width: 45%; 
+    width: 45%;
+   	background-color: #ffffff;
+   	border-color: #45A28A;
+   	color: #45A28A;  
+}
+
+.rentbtn:hover{
+   	background-color: #45A28A;
+   	color: #ffffff;  
 }
 
 #rentContent{    
     margin: 0 12.5%;
     height: 493px;
-   
     border-radius: 6px;
 }
 
-#infowindow{width:160px;text-align:center;padding:6px 0; font-size:12px }
+#infowindow{
+	width:160px;text-align:center;
+	padding:6px 0; font-size:12px 
+}
 

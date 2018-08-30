@@ -47,7 +47,7 @@ public class UserController {
 
 	// id 중복확인
 	@RequestMapping("/checkId")
-	public ModelAndView cId(HttpServletRequest req) {
+	public ModelAndView checkId(HttpServletRequest req) {
 		String userEmail = req.getParameter("checkId");
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		HashMap<String, Object> param = HttpUtil.getParamMap(req);
@@ -59,7 +59,6 @@ public class UserController {
 		HashMap<String, Object> resultmap = (HashMap<String, Object>) di.call(param);
 
 		int status = 0;		// 결과 상태 확인하는 값
-
 		if (resultmap != null) {
 			map.put("msg", "이미 있는 아이디입니다.");
 			map.put("status", FinalUtil.NO);
@@ -73,7 +72,6 @@ public class UserController {
 
 	// 로그인 & 
 	@RequestMapping("/userSelect")
-//	public void userSelect(HttpServletRequest req, HttpServletResponse res, RedirectAttributes attr, HttpSession session) {
 	public ModelAndView userSelect(HttpServletRequest req, HttpServletResponse res, RedirectAttributes attr, HttpSession session) {
 		HashMap<String, Object> param = HttpUtil.getParamMap(req);
 		param.put("sqlType", "user.userSelect");
@@ -95,22 +93,21 @@ public class UserController {
 		return HttpUtil.makeJsonView(resultMap);
 	}
 	
-	
-	// 정보수정
+		// 정보수정
 		@RequestMapping("/userUpdate")
 		public ModelAndView userUpdate(HttpServletRequest req) {
-			String userEmail =  req.getParameter("userEmail");
-			String userName =  req.getParameter("userName");
-			String userPwd =  req.getParameter("userPwd");
-			String addrNo =  req.getParameter("addrNo");
-			String addr =  req.getParameter("addr");
+			System.out.println("userUpdate!!!");
+			HashMap<String, Object> param = new HashMap<String, Object>();
+			String userEmail = req.getParameter("userEmail");
+			String addrNo = req.getParameter("addrNo");
+			String addr = req.getParameter("addr");
+			param.put("userEmail", userEmail);
+			param.put("addrNo", addrNo);
+			param.put("addr", addr);
 			
-			System.out.println("para m = = = = = "  + userName +userName);
-			System.out.println("para m = = = = = "  + userPwd +addrNo);
-			System.out.println("para m = = = = = "  + addr );
-			HashMap<String, Object> param = HttpUtil.getParamMap(req);
-			HashMap<String, Object> map = new HashMap<String, Object>();
 			System.out.println("test  __update  " + param);
+			
+			HashMap<String, Object> map = new HashMap<String, Object>();
 			
 			param.put("sqlType", "user.userUpdate");
 			param.put("sql", "update");
@@ -118,15 +115,13 @@ public class UserController {
 			int status = (int) di.call(param);
 			/********************************************************************************************/
 			System.out.println(status);
-				
-			if (status == 1) {
-				map.put("msg", "글수정이 완료 되었습니다.");
-				map.put("status", FinalUtil.OK);
-				
-			} else {
-				map.put("msg", "글 작성 시 오류 발생.");
-			}
 			
+			if (status == 1) {
+				map.put("msg",  "정보수정이 완료 되었습니다.");
+				map.put("status", FinalUtil.OK);
+			} else {
+				map.put("msg", "정보수정이 실패하였습니다");
+			}
 			return HttpUtil.makeJsonView(map);
 		}
 	

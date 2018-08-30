@@ -45,7 +45,6 @@ public class HttpUtil {
 	}
 
 	public static void makeJsonWriter(HttpServletResponse res, HashMap<String, Object> map) {
-		
 		res.setCharacterEncoding("UTF-8");
 		res.setContentType("text/html;charset=utf-8;");
 		

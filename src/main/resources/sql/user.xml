@@ -45,11 +45,19 @@
 	<update id="userUpdate" parameterType="HashMap">
 		update user
 		set
-			userPwd = #{userPwd},  
 			addrNo 	= #{addrNo},
 			addr	= #{addr}
 		where
 			userEmail = #{userEmail}
+	</update>
+	
+		<!-- 비밀번호 수정 -->
+	<update id="pwdUpdate" parameterType="HashMap">
+		update user
+		set
+		userPwd = #{userPwd},  
+		where
+		userEmail = #{userEmail}
 	</update>
 	
 </mapper>

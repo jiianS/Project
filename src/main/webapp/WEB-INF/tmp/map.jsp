@@ -5,6 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel='shortcut icon' href='resources/img/bike_Icon.png'>
     <link rel="stylesheet" type="text/css" href="resources/css/web.css">
     <link rel="stylesheet" type="text/css" href="resources/css/map.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,14 +30,14 @@
     <a href="/" class="left wide button">따릉따릉이</a>
     
     <div class="right">
-      <a href="/#about" class="bar-item button">
+      <a href="/main#about" class="bar-item button">
      	 <i class="fa fa-bicycle"></i>ABOUT</a>
       <a href="/map" class="bar-item button">
           <i class="fa fa-map-marker"></i> 따릉이는 어디에?</a>
       <a href="/analysis" class="bar-item button">
           <i class="fa fa-pie-chart"></i> ANALYSIS</a>
       <a href="/#contact" class="bar-item button">
-          <i class="fa fa-envelope"></i> CONTACT</a>
+          <i class="fa fa-envelope"></i> CONTACT</a>s  
     </div>
   </div>
 </div>

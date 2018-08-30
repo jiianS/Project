@@ -148,9 +148,6 @@ $(document).ready(function() {
 	});
 	
 	
-	
-	
-	
 	function selectList(){
 	    // 서울시의 지역구를 배열로 지정
 			var area = ["지역구 선택하기","강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구","용산구","은평구","종로구","중구","중랑구"];
@@ -158,7 +155,6 @@ $(document).ready(function() {
 	    // select박스 안의 option 값 추가하기
 	     $.each(eval(area), function() {   $("#gu").append("<option value='"+this+"'>"+this+"</option>");  });
 	     
-
 	     // select에서 option값을 바뀔때마다 변경되게 하기
 	     $("#gu").on("change", function() {
 
@@ -179,8 +175,6 @@ $(document).ready(function() {
 		             		$("#m_ul").append("<span> "+data.DATA[i].new_addr+"</span>");
 		             	} 
 		         	}
-		        	
-		        	
 		        	
 		        	panTo(data.DATA[2].latitude ,data.DATA[2].longitude)
 		         	// 리스트 클릭했을 때, 해당 위치로 옮기기(panTo())
