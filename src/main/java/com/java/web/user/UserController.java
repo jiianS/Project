@@ -1,11 +1,13 @@
 package com.java.web.user;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.binding.MapperMethod.ParamMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,7 +67,6 @@ public class UserController {
 		param.put("sql", "selectOne");
 		HashMap<String, Object> resultmap = (HashMap<String, Object>) di.call(param);
 
-		int status = 0; // 결과 상태 확인하는 값
 		if (resultmap != null) {
 			map.put("msg", "이미 있는 아이디입니다.");
 			map.put("status", FinalUtil.NO);
@@ -113,30 +114,39 @@ public class UserController {
 
 	// 정보수정
 	@RequestMapping("/userUpdate")
-	public ModelAndView userUpdate(HttpServletRequest req) {
+	public ModelAndView userUpdate(HttpServletRequest req, HttpSession session) {
 		System.out.println("userUpdate!!!");
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		String userEmail = req.getParameter("userEmail");
-		String addrNo = req.getParameter("addrNo");
-		String addr = req.getParameter("addr");
-		param.put("userEmail", userEmail);
-		param.put("addrNo", addrNo);
-		param.put("addr", addr);
+//		HashMap<String, Object> param = new HashMap<String, Object>();
+//		String userEmail = req.getParameter("userEmail");
+//		String userName = req.getParameter("userName");
+//		String addrNo = req.getParameter("addrNo");
+//		String addr = req.getParameter("addr");
+//		
+//		param.put("userEmail", userEmail);
+//		param.put("userName", userName);
+//		param.put("addrNo", addrNo);
+//		param.put("addr", addr);
 
-		HashMap<String, Object> map = new HashMap<String, Object>();
+		HashMap<String, Object> param  = HttpUtil.getParamMap(req);
 		param.put("sqlType", "user.userUpdate");
 		param.put("sql", "update");
-
+		
+		System.out.println(param);
 		int status = (int) di.call(param);
+		
 		/********************************************************************************************/
 		System.out.println(status);
+		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		if (status == 1) {
+			
 			map.put("msg", "정보수정이 완료 되었습니다.");
 			map.put("status", FinalUtil.OK);
+			
 		} else {
 			map.put("msg", "정보수정이 실패하였습니다");
 		}
+		session.setAttribute("user", param);
 		return HttpUtil.makeJsonView(map);
 	}
 
@@ -187,6 +197,25 @@ public class UserController {
 		}
 		HttpUtil.makeJsonWriter(res, resultMap);
 	}
+	
+	
+	// 내 정보 갖고 오기
+	@RequestMapping("/userProfile")
+	public void userProfile(HttpServletRequest req, HttpServletResponse res) {
+
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		String userEmail = req.getParameter("uesrEmail");
+
+		param.put("userEmail",userEmail);
+		param.put("sqlType", "user.checkId");
+		param.put("sql","selectOne");
+		
+		HashMap<String, Object> map = (HashMap<String, Object>) di.call(param);
+		System.out.println(map);
+
+		HttpUtil.makeJsonWriter(res, map);
+	}
+	
 
 	// logout
 	@RequestMapping("/logout")

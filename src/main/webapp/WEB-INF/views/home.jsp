@@ -29,6 +29,7 @@
 
 </head>
 <body>
+
 	<c:if test="${sessionScope.user.status == 1}">
 		<!-- Nav bar -->
 		<div class="top">
@@ -56,7 +57,7 @@
 	<header class="bgImg bg0">
 		<section id="banner">
 			<div id=homeTitle>
-				<h2>따릉따릉이</h2>
+				<h2>따릉따릉이 </h2>
 				<p>서울 공공자전거 대여소 위치를 알려주고, 간단한 분석을 보여주는 페이지입니다</p>
 			</div>
 			<c:if test="${empty sessionScope || sessionScope.user.status == 0}">
@@ -142,8 +143,6 @@
 							<div class="tab_div">
 								<form id="pwdForm" class="form-horizontal" method="post"
 									action="">
-									<input type="hidden" class="form-control " name="email"
-										id="u_mail" disabled />
 									<div class="form-group">
 										<label for="password" class="cols-sm-2 control-label">현재
 											비밀번호</label>

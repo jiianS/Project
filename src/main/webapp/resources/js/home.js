@@ -76,8 +76,6 @@ $(document).ready(function(){
 		});
 	});
     
-
-
 	
     /*myPage & update*/
     $("#mypage").on("click", function() {
@@ -85,8 +83,8 @@ $(document).ready(function(){
     	$("#banner").css("padding" , "8em 0");
     	$("#homeTitle").css("color","#505050")
 		$("#profile").css("display","block");
-		
-        //  정보 받아오기
+    	
+    	// 정보 받아오기
 	   	 $.post("userCheck").done(function(data) {
 	 		 var d = JSON.parse(data)
 	 		$("#p_mail").val(d['userEmail']),
@@ -95,6 +93,7 @@ $(document).ready(function(){
 	 		$("#p_addr").val(d['addr']),
 	 		$("#myForm .form-control").attr("readonly",true);
 	 	});
+    	
 	});
     
     // update버튼 받아 왔을 때!
@@ -121,11 +120,13 @@ $(document).ready(function(){
  			url:'userUpdate',
  			data : {
 				"userEmail" : $("#p_mail").val(),
+				"userName"	: $("#p_name").val(),
 				"addrNo" 	: $("#p_addrno").val(),
 				"addr" 		: $("#p_addr").val(),
  			}
  		}).done(function(data) {
  			var d = JSON.parse(data)
+ 			console.log("data" + data)
  			alert(d.msg)
 	         $("#update_btn").removeClass("display_none");
 	         $("#update_submit").addClass("display_none");
@@ -197,8 +198,6 @@ function checkId() {
 	}
 }
 
-
-
 // 로그인시 이메일 체크
 function emailOK() {
 	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -258,7 +257,6 @@ function checkPwd() {
         $('input[name="repwd"]').css("background-color", "#BA2B2B");
     }
 }
-
 
 
 //id_pwd 확인
@@ -359,6 +357,7 @@ function sample6_execDaumPostcode(postcheck) {
         }
     }).open();
 }
+
 
 
 

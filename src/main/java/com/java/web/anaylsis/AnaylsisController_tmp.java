@@ -35,8 +35,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 
-@Controller
-public class AnaylsisController {
+public class AnaylsisController_tmp {
 	/*********************************************************/
 	public static int check = 0;
 	public static String rentalDate;
@@ -63,6 +62,40 @@ public class AnaylsisController {
 		// inputUri -> 읽어들일 file / outputUri -> 분석해서 출력할 csv
 		Job job = Job.getInstance(conf, "test");
 		
+		mr(job, inputPath, res);
+		
+		if (check == 1 || check == 2 || check == 3 ) { // 연령대별
+			job.setMapperClass(MapperAge.class);
+
+		} else if (check == 4 || check == 5 || check == 6 ) { // 성별
+			job.setMapperClass(MapperGender.class);
+		} else {
+			System.out.println("check값 오류유융");
+		}
+		job.setReducerClass(Reducer.class);
+		job.waitForCompletion(true);
+		System.out.println("끝");
+	}
+	
+	@RequestMapping(value = "/mrMapCall", method = RequestMethod.POST)
+	public void mrMapCall(HttpServletRequest req,  HttpServletResponse res) throws Exception {
+		rentID = req.getParameter("rentID");
+		String year = req.getParameter("year");
+		
+		System.out.println("mrMapCall ---> " + rentID +  " ; " + year );
+
+		Job job = Job.getInstance(conf, "test2");
+		mr(job, year, res);
+		
+		job.setMapperClass(MapperMap.class);
+		job.setReducerClass(Reducer.class);
+		job.waitForCompletion(true);
+
+		System.out.println("끝");
+	}
+	
+	
+	public void mr(Job job, String inputPath, HttpServletResponse res) throws Exception {
 		long time = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd_hhmmss");
 		String strTime = dayTime.format(new Date(time));
@@ -87,59 +120,11 @@ public class AnaylsisController {
 		job.setJarByClass(this.getClass());
 		
 		System.out.println("d여기까지는 오나요???????");
-		
-		if (check == 1 || check == 2 || check == 3 ) { // 연령대별
-			job.setMapperClass(MapperAge.class);
-
-		} else if (check == 4 || check == 5 || check == 6 ) { // 성별
-			job.setMapperClass(MapperGender.class);
-		} else {
-			System.out.println("check값 오류유융");
-		}
-		job.setReducerClass(Reducer.class);
-		job.waitForCompletion(true);
-		System.out.println("끝");
 	}
 	
-	@RequestMapping(value = "/mrMapCall", method = RequestMethod.POST)
-	public void mrMapCall(HttpServletRequest req,  HttpServletResponse res) throws Exception {
-		rentID = req.getParameter("rentID");
-		String year = req.getParameter("year");
-		
-		System.out.println("mrMapCall ---> " + rentID +  " ; " + year );
-
-		Job job2 = Job.getInstance(conf, "test2");
-		long time = System.currentTimeMillis();
-		SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd_hhmmss");
-		String strTime = dayTime.format(new Date(time));
-		
-		URI inputUri = URI.create("/input/csv/" + year + ".csv");
-		URI outputUri = URI.create("/result/" + strTime);
-
-		HashMap<String, Object> resultMap = new HashMap<String, Object>();
-		String name = "/result/" + strTime;
-		resultMap.put("name", name);
-		res.setCharacterEncoding("UTF-8");
-		res.setContentType("text/json;charset=utf-8");
-		JSONObject json = JSONObject.fromObject(JSONSerializer.toJSON(resultMap));
-		res.getWriter().write(json.toString());
-
-		FileInputFormat.addInputPath(job2, new Path(inputUri));
-		job2.setInputFormatClass(TextInputFormat.class);
-		FileOutputFormat.setOutputPath(job2, new Path(outputUri));
-		job2.setOutputFormatClass(TextOutputFormat.class);
-		job2.setOutputKeyClass(Text.class);
-		job2.setOutputValueClass(IntWritable.class);
-		job2.setJarByClass(this.getClass());
-		
-		System.out.println("d여기까지는 오나요???????");
-		
-		job2.setMapperClass(MapperMap.class);
-		job2.setReducerClass(Reducer.class);
-		job2.waitForCompletion(true);
-
-		System.out.println("끝");
-	}
+	
+	
+	
 	
 
 	/*** 리듀스 된 파일 읽어오기 ******/

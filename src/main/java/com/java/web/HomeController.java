@@ -35,4 +35,10 @@ public class HomeController {
 		return "main";
 	}
 	
+	//@RequestMapping("/analysis")
+	public String analysis() {
+		return "analysis";
+	}
+	
+	
 }

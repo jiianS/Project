@@ -29,6 +29,7 @@
 		limit 1
 	</select>
 
+	<!-- 아이디 체크 & 이메일만 갖고 정보 받아오기 -->
 	<select id="checkId" parameterType="HashMap"
 		resultType="HashMap">
 		select
@@ -43,13 +44,15 @@
 		from user
 		WHERE userEmail=#{userEmail}
 	</select>
+	
 
 	<!-- 정보수정 -->
 	<update id="userUpdate" parameterType="HashMap">
 		update user
 		set
-		addrNo = #{addrNo},
-		addr = #{addr}
+			userName= #{userName},
+			addrNo 	= #{addrNo},
+			addr	= #{addr}
 		where
 		userEmail = #{userEmail}
 	</update>

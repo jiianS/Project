@@ -34,13 +34,14 @@ public class Mail {
 		
 		String to = "jiianiii1028@gmail.com";
 
+		System.out.println(name);
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper msgHelper = new MimeMessageHelper(message, true, "UTF-8");
 
 			// Subject(메일 제목)
 			msgHelper.setTo(to);
-			msgHelper.setFrom(name, mail);
+			msgHelper.setFrom(mail);
 			msgHelper.setText(comments);
 			msgHelper.setSubject("[" + name + "] 님이 보낸 메세지 입니다");
 
