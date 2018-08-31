@@ -56,16 +56,14 @@ $(document).ready(function(){
 		}
 	});//form submit
     
-    
-	//login
 	$("#loginForm").submit(function(e) {
-		e.preventDefault();
-		console.log($("#id").val(),$("#pwd").val())
-		$.ajax({
+    	e.preventDefault();
+    	
+    	$.ajax({
 			type:"post",
 			url :"userSelect",
 			data : {
-				"userEmail" :$("#id").val(),
+				"userEmail" : $("#id").val(),
 				"userPwd" 	: $("#pwd").val()
 			}
 		}).done(function(data) {
@@ -74,9 +72,11 @@ $(document).ready(function(){
 			
 			if(d.status == 1) {
 			    location.href="/main";
-             }
+	         }
 		});
-	});//form submit
+	});
+    
+
 
 	
     /*myPage & update*/
@@ -198,6 +198,7 @@ function checkId() {
 }
 
 
+
 // 로그인시 이메일 체크
 function emailOK() {
 	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
@@ -257,6 +258,7 @@ function checkPwd() {
         $('input[name="repwd"]').css("background-color", "#BA2B2B");
     }
 }
+
 
 
 //id_pwd 확인

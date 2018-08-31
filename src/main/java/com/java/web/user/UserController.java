@@ -81,35 +81,34 @@ public class UserController {
 	@RequestMapping("/userSelect")
 	public ModelAndView userSelect(HttpServletRequest req, HttpServletResponse res, RedirectAttributes attr,
 			HttpSession session) {
-		System.out.println("로그인 확인중 ");
+		
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		String userEmail = req.getParameter("userEmail");
-		String userPwd = req.getParameter("userPwd");
-		param.put("userEmail", userEmail);
-		param.put("userPwd", userPwd);
-		
-		HashMap<String, Object> resultMap = (HashMap<String, Object>) di.call(param);
+			String userEmail = req.getParameter("userEmail");
+			String userPwd = req.getParameter("userPwd");
+			param.put("userEmail", userEmail);
+			param.put("userPwd", userPwd);
+			param.put("sqlType", "user.userSelect");
+			param.put("sql", "selectOne");
+			
+			HashMap<String, Object> resultMap = (HashMap<String, Object>) di.call(param);
 
-		param.put("sqlType", "user.userSelect");
-		param.put("sql", "selectOne");
+			System.out.println("로그인 확인중 ");
+			System.out.println(param );
+			
+			if (resultMap == null) {
+				// 로그인되지 않음
+				resultMap = new HashMap<String, Object>();
+				resultMap.put("status", FinalUtil.NO);
+				resultMap.put("msg", "이메일 또는 비번이 틀립니다");
 
-		System.out.println("로그인 확인중 ");
-		System.out.println(param );
+			} else {
+				resultMap.put("status", FinalUtil.OK);
+				resultMap.put("msg", "로그인 되었습니다.");
+			}
+			session.setAttribute("user", resultMap);
 		
-		if (resultMap == null) {
-			// 로그인되지 않음
-			resultMap = new HashMap<String, Object>();
-			resultMap.put("status", FinalUtil.NO);
-			resultMap.put("msg", "이메일 또는 비번이 틀립니다");
-
-		} else {
-			resultMap.put("status", FinalUtil.OK);
-			resultMap.put("msg", "로그인 되었습니다.");
-		}
-		
-		session.setAttribute("user", resultMap);
-		System.out.println(resultMap);
-		return HttpUtil.makeJsonView(resultMap);
+			System.out.println("login" +resultMap );
+			return HttpUtil.makeJsonView(resultMap);
 	}
 
 	// 정보수정
