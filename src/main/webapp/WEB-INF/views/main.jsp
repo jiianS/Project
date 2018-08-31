@@ -36,8 +36,15 @@
 </head>
 
 <body>
+<c:if test="${empty sessionScope || sessionScope.user.status == 0}">
+	<script type="text/javascript">
+		alert("로그인 후 이용 가능합니다");
+		location.href="/"
+	</script>
+</c:if>
+
 	<!-- Nav bar -->
-		<div class="top">
+	<div class="top">
 		<div class="bar white" id="navBar">
 			<a href="/" class="left wide button">따릉따릉이</a>
 
@@ -55,7 +62,7 @@
 					class="fa fa-envelope"></i> CONTACT
 				</a>
 				<a href="/" class="bar-item button"> 
-					<i class="fa fa-user-circle-o" style="font-size: 25px;"></i>
+					<i class="fa fa-user-circle-o" style="font-size: 24px;"></i>
 				</a>
 			</div>
 		</div>
@@ -82,7 +89,7 @@
 
 	<!--about-->
 	<section id="about" class="center">
-		<h2>ABOUT CIBA</h2>
+		<h2>ABOUT 따릉따릉이</h2>
 		<p class="center gray"
 			style="font-size: 15px; color: #606060; margin: 30px 0;">
 			<span> 자전거와 함께하는 건강한 도시, 세계적인 자전거 도시 SEOUL</span><br> <span>서울
@@ -272,7 +279,6 @@
 		</div>
 		<p>Copyright by jiianiii</p>
 	</footer>
-
 
 </body>
 </html>

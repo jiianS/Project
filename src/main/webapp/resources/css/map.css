@@ -1,13 +1,13 @@
 #mapsection h2{
 	margin-top: 100px;
     margin-left: 5%;
-    color: #ffffff;
+    color: #375352;
 }
 
 #mapContainer {    
     min-height: 100%;
     margin-left: 8%;
-    width: 50%;
+    width: 43%;
     float: left;
 }
 
@@ -63,8 +63,8 @@
    
 #rentContain{
     min-height: 100%;
-    width: 45%;
-    float: right;
+    width: 43%;
+    float: left;
     position: relative;
 }
 

@@ -2,41 +2,44 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <!-- 개인 프로젝트 SQL(USER) --> 
+<!-- 개인 프로젝트 SQL(USER) -->
 <mapper namespace="user">
 	<insert id="userInsert" parameterType="HashMap">
-		insert into user 
-			(userEmail, userName, userPwd, addrNo, addr, regDate) 
-		values 
-			(#{userEmail},#{userName},#{userPwd},#{addrNo}, #{addr}, DATE_FORMAT(NOW(),'%Y%m%d'))
+		insert into user
+		(userEmail, userName, userPwd, addrNo, addr, regDate)
+		values
+		(#{userEmail},#{userName},#{userPwd},#{addrNo}, #{addr}, DATE_FORMAT(NOW(),'%Y%m%d'))
 	</insert>
-	
-	<select id="userSelect" parameterType="HashMap" resultType="HashMap">
-		select 
-				`userNo`,
-				`userEmail`,
-				`userName`,
-				`userPwd`,
-				`addrNo`,
-				`addr`,
-				`delYn`,
-				DATE_FORMAT(`regDate`, '%Y-%m-%d') as regDate
+
+	<select id="userSelect" parameterType="HashMap"
+		resultType="HashMap">
+		select
+		`userNo`,
+		`userEmail`,
+		`userName`,
+		`userPwd`,
+		`addrNo`,
+		`addr`,
+		`delYn`,
+		DATE_FORMAT(`regDate`, '%Y-%m-%d') as regDate
 		from user
-	    where userEmail = #{userEmail} 
-	        and userPwd = #{userPwd}
-	       limit 1
+		where userEmail = #{userEmail}
+		and userPwd = #{userPwd} 
+		and delYn = 'N'
+		limit 1
 	</select>
-	
-	<select id="checkId" parameterType="HashMap" resultType="HashMap">
-	   select 
-				`userNo`,
-				`userEmail`,
-				`userName`,
-				`userPwd`,
-				`addrNo`,
-				`addr`,
-				`delYn`,
-				DATE_FORMAT(`regDate`, '%Y-%m-%d') as regDate
+
+	<select id="checkId" parameterType="HashMap"
+		resultType="HashMap">
+		select
+		`userNo`,
+		`userEmail`,
+		`userName`,
+		`userPwd`,
+		`addrNo`,
+		`addr`,
+		`delYn`,
+		DATE_FORMAT(`regDate`, '%Y-%m-%d') as regDate
 		from user
 		WHERE userEmail=#{userEmail}
 	</select>
@@ -45,19 +48,30 @@
 	<update id="userUpdate" parameterType="HashMap">
 		update user
 		set
-			addrNo 	= #{addrNo},
-			addr	= #{addr}
-		where
-			userEmail = #{userEmail}
-	</update>
-	
-		<!-- 비밀번호 수정 -->
-	<update id="pwdUpdate" parameterType="HashMap">
-		update user
-		set
-		userPwd = #{userPwd},  
+		addrNo = #{addrNo},
+		addr = #{addr}
 		where
 		userEmail = #{userEmail}
 	</update>
-	
+
+	<!-- 비밀번호 수정 -->
+	<update id="pwdUpdate" parameterType="HashMap">
+		update user
+		set
+		userPwd = #{userPwd}
+		where
+		userEmail = #{userEmail}
+	</update>
+
+	<!-- 회원 탈퇴 -->
+	<update id="userDel" parameterType="HashMap">
+		update user
+			set delYn = 'Y'
+		where 
+			userEmail = #{userEmail} 
+			and
+			userPwd = #{userPwd}
+	</update>
+
+
 </mapper>

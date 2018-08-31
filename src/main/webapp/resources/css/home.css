@@ -101,3 +101,6 @@ input[type=password] {font-family: sans-serif;}
 	height: 35px;
 }
 
+/*profile에서 update - 우편주소 버튼*/
+#p_postbtn{width:42%}
+#p_postbtn:hover{	background: #606060; color: #fdfdfd;}

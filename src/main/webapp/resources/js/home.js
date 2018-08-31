@@ -28,12 +28,16 @@ $(document).ready(function(){
 	});
     
     // join
-	$("#join_submit").submit(function(e) {
+	$("#join_submit").on("click",function(e) {
 		e.preventDefault();	
+		
+		if($("#password").val() != $("#repwd").val()){
+			alert("비밀번호가 서로 다릅니다")
+		}else{
+		
 			$.ajax({
 				type:"post",
 				url :"userInsert",
-				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				data : {
 					"userEmail" : $("#email").val(),
 					"userName" 	: $("#name").val(),
@@ -49,17 +53,17 @@ $(document).ready(function(){
 	                location.href="/";
 	             }
 			});
+		}
 	});//form submit
     
     
 	//login
 	$("#loginForm").submit(function(e) {
 		e.preventDefault();
-		
+		console.log($("#id").val(),$("#pwd").val())
 		$.ajax({
 			type:"post",
 			url :"userSelect",
-			contentType : "application/x-www-form-urlencoded; charset=UTF-8",
 			data : {
 				"userEmail" :$("#id").val(),
 				"userPwd" 	: $("#pwd").val()
@@ -69,7 +73,7 @@ $(document).ready(function(){
 			alert(d.msg);
 			
 			if(d.status == 1) {
-			    location.href="/";
+			    location.href="/main";
              }
 		});
 	});//form submit
@@ -89,27 +93,26 @@ $(document).ready(function(){
 	 		$("#p_name").val(d['userName']),
 	 		$("#p_addrno").val(d['addrNo']),
 	 		$("#p_addr").val(d['addr']),
-	 		$(".form-control").attr("readonly",true);
+	 		$("#myForm .form-control").attr("readonly",true);
 	 	});
-	   	 
-	    // update버튼 받아 왔을 때!
-	   	$("#update_btn").on("click", function(e) {
-	   		e.preventDefault();
-	    		$(".form-control").attr("readonly",false);
-	    		$("#p_mail").attr("readonly",true);
-	    		$(".form-control").attr("required",true);
-	    		$("#p_addrno").css("width", "52%")
-	    		$("#p_postbtn").removeClass("display_none");
-
-		         $("#update_btn").addClass("display_none");
-		         $("#update_submit").removeClass("display_none");
-	  		
-	  		alert("[이름과 주소 수정 가능!]");
-	 	});
-	   	 
 	});
-
     
+    // update버튼 받아 왔을 때!
+   	$("#update_btn").on("click", function(e) {
+   		e.preventDefault();
+    		$(".form-control").attr("readonly",false);
+    		$("#p_mail").attr("readonly",true);
+    		$(".form-control").attr("required",true);
+    		$("#p_addrno").css("width", "52%")
+    		$("#p_postbtn").removeClass("display_none");
+
+	         $("#update_btn").addClass("display_none");
+	         $("#update_submit").removeClass("display_none");
+  			alert("[이름과 주소 수정 가능!]");
+ 	});
+
+   	
+    // mypage_profile 수정
     $("#myForm").submit(function(e) {
     	e.preventDefault();
     	
@@ -124,12 +127,18 @@ $(document).ready(function(){
  		}).done(function(data) {
  			var d = JSON.parse(data)
  			alert(d.msg)
-
+	         $("#update_btn").removeClass("display_none");
+	         $("#update_submit").addClass("display_none");
+	         $("#p_addrno").css("width", "100%")
+	         $("#p_postbtn").addClass("display_none");
+	         $("#myForm .form-control").attr("readonly",true);
+	         
 		});
 	});
-	
+    
 });
 
+// 모달
 function layerout(){
    $("#layer").css("display","none");
    $("#joinModal").css("display","none");
@@ -144,6 +153,7 @@ function layerout(){
 	})
 }
 
+// 로그아웃
 function logout() {
 	$.ajax({
 		url:"logout"
@@ -155,41 +165,60 @@ function logout() {
 	});
 }
 
-
-//아이디 비번 체크 함수
+// 아이디 비번 체크 함수
 function checkId() {
 	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	var checkId = $("#email").val();
-	
+
 	// 이메일 체크하기
-	if ( !(regExp.test(checkId))) {
-	      alert("잘못된 이메일 형식입니다.ex)test@gmail.com");
-			$("#email").css("background-color", "#BA2B2B");
-			$("#email").css("color", "#ffffff");
-	      return false;
+	if (!(regExp.test(checkId))) {
+		alert("잘못된 이메일 형식입니다.ex)test@gmail.com");
+		$("#email").css("background-color", "#BA2B2B");
+		$("#email").css("color", "#ffffff");
+
+		return false;
+	} else {
+		$.ajax({
+			url : "checkId",
+			data : { checkId : checkId },
+			success : function(data) {
+				var d = JSON.parse(data)
+				if (d.status == '1') {
+					$("#email").css("background-color", "#fdffe4");
+					$("#email").css("color", "#555555");
+				} else if (d.status == '0') {
+					// 아이디 확인 -> 가입 불가
+					alert(d.msg);
+					$("#email").css("background-color", "#BA2B2B");
+					$("#email").css("color", "#ffffff");
+				}
+			}
+		});
+	}
+}
+
+
+// 로그인시 이메일 체크
+function emailOK() {
+	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+	var checkId = $("#id").val();
+
+	// 이메일 체크하기
+	if (!(regExp.test(checkId))) {
+		alert("잘못된 이메일 형식입니다.ex)test@gmail.com");
+		$("#id").css("background-color", "#BA2B2B");
+		$("#id").css("color", "#ffffff");
+	}else{
+		 $('#id').css("background-color", "#fdffe4");
+		 $('#id').css("color", "#333333");
 	}
 	
-	$.ajax({
-		url : "checkId",
-		data:{ checkId : checkId },
-		success : function(data) {
-			var d = JSON.parse(data)
-		if(d.status == '1'){		
-				$("#email").css("background-color", "#fdffe4");
-				$("#email").css("color", "#555555");
-			}else if(d.status == '0'){		
-				//아이디 확인 -> 가입 불가
-				alert(d.msg);
-				$("#email").css("background-color", "#BA2B2B");
-				$("#email").css("color", "#ffffff");
-			}		
-		}
-	});
 }
 
 // 6- 15자 영문대소문자, 숫자, 특수문자 혼합 사용
 function pwdOK() {
-	 var pwd = $("#password").val();	
+	 
+	 var pwd =  $('input[name="password"]').val();
 	 var regex = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
 	 // 영문, 숫자, 특수문자 2종 이상 혼용
@@ -198,9 +227,9 @@ function pwdOK() {
 	// 글자수 제한
 	  if(pwd.length < 6 || pwd.length > 16 ) {
 		    alert("비밀번호는 영문(대소문자구분),숫자,특수문자(~!@#$%^&*()-_? 만 허용)를 2개 이상 혼용하여 8~15자를 입력해주세요.");
-			$("#password").css("background-color", "#BA2B2B");
-			$("#password").css("color", "#ffffff");
-			    return false;
+			 $('input[name="password"]').css("background-color", "#BA2B2B");
+			 $('input[name="password"]').css("color", "#ffffff");
+			 return false;
 	  }
 	 
 	 if(pwd.search(/[0-9]/g) != -1 ) chk ++;
@@ -212,24 +241,23 @@ function pwdOK() {
 	  return false;
 	 }
 
-		$("#password").css("background-color", "#fdffe4");
-		$("#password").css("color", "#333333");
+	 $('input[name="password"]').css("background-color", "#fdffe4");
+	 $('input[name="password"]').css("color", "#333333");
 	  return true;
 }
 
 //재입력 비밀번호 체크하여 가입버튼 비활성화 또는 맞지않음을 알림.
 function checkPwd() {
-    var checkPwd = $('#password').val();
-    var rePwd = $('#repwd').val();
+    var checkPwd = $('input[name="password"]').val();
+    var rePwd	 = $('input[name="repwd"]').val();
 
    if (checkPwd == rePwd) {
-        $("#repwd").css("background-color", "#fdffe4");
-        $("#join_submit").prop("disabled", false);
+	    $('input[name="repwd"]').css("background-color", "#fdffe4");
     } else if (checkPwd != repwd) {            
-        $("#repwd").css("background-color", "#BA2B2B");
-        $("#join_submit").prop("disabled", true);
+        $('input[name="repwd"]').css("background-color", "#BA2B2B");
     }
 }
+
 
 //id_pwd 확인
 function checklogin() {
@@ -239,6 +267,52 @@ function checklogin() {
 		$("#login_submit").prop("disabled", false);
 	}
 }
+
+// 비밀번호 update
+function pwdUpdate() {
+	if ($("#p_pwd").val() != $("#check_pwd").val()) {
+		alert("현재 비밀번호를 확인하세요")
+		
+	} else if ($("#n_pwd").val() != $("#n_repwd").val()) {
+		alert("변경되는 비밀번호 값이 달라요!")
+	} else {
+		$.ajax({
+			type : "post",
+			url  : "pwdUpdate",
+			data : {
+				"userEmail" : $("#d_email").val(),
+				"userPwd" : $("#n_pwd").val()
+			}
+		}).done(function(data) {
+			var d = JSON.parse(data)
+			console.log("sja??" + data)
+			alert(d.msg)
+			if(d.status ==1){
+				location.href="/"
+			}
+		});
+	}
+}
+
+// 아이디 삭제
+function idDelete() {
+		alert("정말 탈퇴하실건가요??")
+		$.ajax({
+			type : "post",
+			url : 'userDelete',
+			data : { 
+				"userEmail" : $("#d_email").val(),
+				"userPwd" : $("#d_pwd").val()
+			}
+		}).done(function(data) {
+			var d = JSON.parse(data)
+			alert(d.msg)
+			if(d.status ==1){
+				location.href="/"
+			}
+		});
+}
+
 //다음주소 api
 function sample6_execDaumPostcode(postcheck) {
     new daum.Postcode({
@@ -283,5 +357,6 @@ function sample6_execDaumPostcode(postcheck) {
         }
     }).open();
 }
+
 
 
