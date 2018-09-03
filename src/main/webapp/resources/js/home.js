@@ -294,7 +294,7 @@ function checklogin() {
 function pwdUpdate() {
 	if ($("#p_pwd").val() != $("#check_pwd").val()) {
 		alert("현재 비밀번호를 확인하세요")
-		
+		return false;
 	} else if ($("#n_pwd").val() != $("#n_repwd").val()) {
 		alert("변경되는 비밀번호 값이 달라요!")
 	} else {
@@ -311,6 +311,7 @@ function pwdUpdate() {
 			if(d.status ==1){
 				location.href="/"
 			}
+			return false;
 		});
 	}
 }

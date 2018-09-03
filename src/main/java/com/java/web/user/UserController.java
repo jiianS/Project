@@ -11,6 +11,7 @@ import org.apache.ibatis.binding.MapperMethod.ParamMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -79,7 +80,7 @@ public class UserController {
 	}
 
 	// 로그인 &
-	@RequestMapping("/userSelect")
+	@RequestMapping(value = "userSelect" , method = RequestMethod.POST)
 	public ModelAndView userSelect(HttpServletRequest req, HttpServletResponse res, RedirectAttributes attr,
 			HttpSession session) {
 		
@@ -113,7 +114,7 @@ public class UserController {
 	}
 
 	// 정보수정
-	@RequestMapping("/userUpdate")
+	@RequestMapping(value="userUpdate", method = RequestMethod.POST)
 	public ModelAndView userUpdate(HttpServletRequest req, HttpSession session) {
 		System.out.println("userUpdate!!!");
 //		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -151,7 +152,7 @@ public class UserController {
 	}
 
 	// 비밀번호 변경
-	@RequestMapping("/pwdUpdate")
+	@RequestMapping(value="pwdUpdate", method = RequestMethod.POST)
 	public ModelAndView pwdUpdate(HttpServletRequest req, HttpSession session) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -181,7 +182,7 @@ public class UserController {
 	}
 
 	// login check (정보 확인하기)
-	@RequestMapping("/userCheck")
+	@RequestMapping(value="userCheck", method = RequestMethod.POST)
 	public void userCheck(HttpServletResponse res, HttpSession session) {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		if (session == null) {
@@ -200,7 +201,7 @@ public class UserController {
 	
 	
 	// 내 정보 갖고 오기
-	@RequestMapping("/userProfile")
+//	@RequestMapping("/userProfile")
 	public void userProfile(HttpServletRequest req, HttpServletResponse res) {
 
 		HashMap<String, Object> param = new HashMap<String, Object>();
