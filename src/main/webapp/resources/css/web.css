@@ -150,7 +150,7 @@ a {	text-decoration: none;	color: #808080;}
 
 .aboutItem {
 	padding: 0 5%;
-	width: 22.5%;
+	width: 15%;
 	font-size: 14px;
 }
 
@@ -159,9 +159,12 @@ a {	text-decoration: none;	color: #808080;}
 	font-size: 60px;
 }
 
-.aboutItem p {
+.aboutItem ul, .aboutItem p {
 	color: #707070;
 }
+
+
+.aboutItem li{ text-align: left;}
 
 /***********overlay******************/
 .overlay {

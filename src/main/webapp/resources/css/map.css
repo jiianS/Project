@@ -11,9 +11,10 @@
     float: left;
 }
 
+
 #mapView{
     width: 90%;
-    height: 300px;    
+    height: 280px;    
     background-color: dimgrey;
     margin: 0 5%;
     margin-bottom: 30px;
@@ -31,6 +32,8 @@
 }
 
 
+
+
 #mapForm{
     margin: 20px 5%;
     width: 90%;
@@ -41,6 +44,24 @@
 	width:30%; height: 35px;
 	display: inline-block; margin: 0 5%
 }
+
+
+.tooltip_txt {
+	display:none;
+    width: 200px;
+    font-size:12px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 3;
+}
+
+.tooltip:hover {  display: inline-block;}
 
 #gu{
     width: 60%;
@@ -60,7 +81,11 @@
     overflow-y: scroll;
     font-size: 14px;
 }
-   
+
+#mapDetail img{
+	width: 90%;	height: 63%;	
+}
+
 #rentContain{
     min-height: 100%;
     width: 43%;
@@ -72,9 +97,7 @@
 
 .rentSpan{ padding: 50px;}
 
-#rentaddr{
-    padding: 35px;
-}
+#rentaddr{    padding: 35px;}
 
 .rentbtn{
     margin-left: 3%;    

@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+	// tooltip
+	geoInfo();
+	
 	//  내 정보 갖고와서 우리집 주소 좌표 얻어오기 위함
 	var locate , userNm
 	//전역변수 선언하기
@@ -155,14 +158,15 @@ $(document).ready(function() {
 	    // select박스 안의 option 값 추가하기
 	     $.each(eval(area), function() {   $("#gu").append("<option value='"+this+"'>"+this+"</option>");  });
 	     
+	     
 	     // select에서 option값을 바뀔때마다 변경되게 하기
 	     $("#gu").on("change", function() {
-
 	     	$("#m_ul").empty();
 	         var guVal = this.value;
 
 	         if (guVal == "지역구 선택하기"){
-	        	 map.setLevel(3);	
+	        	 map.setLevel(3);
+	        	 $("#m_ul").appen("<img src='/resources/img/mapInfo2.PNG'>");	
 	     	}else{
 		         $.ajax({
 		         	url : "resources/data/seoulbicylce.json"            	
@@ -201,8 +205,11 @@ $(document).ready(function() {
 		     		});// 리스트 클릭했을때
 		        	
 		        	
-		        	 $(".rentbtn").on("click",function(){
+		         	
+		         	//분석에서 year 버튼 눌렀을때!!!
+		        	 $(".r_year").on("click",function(){
       			    	console.log("clikd  - -"+ $(this).text());
+      			    	
       			    	var year =  $(this).text();
       			    	$.ajax({
       			    		type : "post",
@@ -264,3 +271,18 @@ $(document).ready(function() {
 	 }
 	
 });
+
+function geoInfo() {
+	$(".tooltip").mouseover(function(){
+	    $("span.tooltip_txt").fadeIn();
+	}).mouseout(function(){
+	    $("span.tooltip_txt").fadeOut();
+	}).mousemove(function(e){
+
+	    $("span.tooltip_txt").css({
+	    	"top":e.pageY+10+"px",
+	    	"left":e.pageX+10+"px"
+	    });
+	});
+	
+}

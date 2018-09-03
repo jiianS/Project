@@ -70,8 +70,8 @@
 			</c:if>
 
 			<c:if test="${sessionScope.user.status == 1}">
-				<div class="g_home2">
-					<button type="button" class="btn btn-info" id="mypage">MYPAGE</button>
+				<div class="g_home">
+					<button type="button" class="btn btn-info" id="mypage" >MYPAGE</button>
 					<button type="button" class="btn btn-primary" id="logout"
 						onclick="logout()">LOGOUT</button>
 				</div>
@@ -353,13 +353,12 @@
 
 				<!--submit / cancel 실행해줄것 -->
 				<div class="form-group ">
-					<button id="join_submit" type="submit" class="btn btn-primary">Register</button>
+					<button id="join_submit" type="submit" class="btn btn-primary" disabled>Register</button>
 					<button type="button" class="btn btn-danger" onclick="layerout()">Cancel</button>
 				</div>
 			</form>
 		</div>
 	</div>
-
 
 
 </body>

@@ -113,17 +113,33 @@
 			<div class="left aboutItem">
 				<i class="fa fa-question"></i>
 				<p style="font-size: 16px; font-weight: bold">We Can</p>
-				<p class="center">대여소의 위치 조회를 할 수 있습니다</p>
-				<p class="txtLeft">따릉이 이용하는 사람들의 성별 및 연령대별로 분석할 수 있습니다</p>
+				<ul class="center" style="list-style: none; ">
+					<li>대여소의 위치 조회를 할 수 있습니다</li>
+					<li>대여소별  연_월별 총 이용건수를 파악할 수 있습니다</li><br>
+					<li>따릉이 이용하는 사람들의 성별 및 연령대별로 분석할 수 있습니다</li>
+				</ul>
 			</div>
 
-			<div class="left aboutItem">
+			<div class="left aboutItem" style="width: 40% ">
 				<i class="fa fa-cog"></i>
 				<p style="font-size: 16px; font-weight: bold">REFERENCE</p>
-				<p>
-					<a href="https://www.bikeseoul.com/main.do#bike_info">서울자전거따릉이</a>
-					<br> <a href="http://data.seoul.go.kr/dataList/datasetList.do">서울열린데이터광장</a><br>
-					<a href="https://developers.kakao.com/">카카오지도API</a>
+				<div class="center">
+				<ul style="list-style: none; padding-left:2%; width: 42%; float: left">
+					<li style="font-size: 16px;font-weight: bold">DATA</li><br>
+					<li><a href="https://www.bikeseoul.com/main.do">서울자전거</a></li>
+					<li><a href="http://data.seoul.go.kr/dataList/datasetList.do">공공자전거 데이터자료_서울열린데이터광장</a></li>
+					<li><a href="https://developers.kakao.com/">KAKAO MAPS API</a></li>
+					<li><a href="https://developers.google.com/chart/">GOOGLE CHART</a></li>
+				</ul>
+				
+				<ul style="list-style: none; padding-left:2%; width: 40%;float: right;">
+					<li style="font-size: 16px; font-weight: bold">DESIGN & IMAGE</li><br>
+					<li><a href="https://www.w3schools.com/">W3SCHOOLS</a></li>
+					<li><a href="https://getbootstrap.com/">BOOTSTRAP</a></li>
+					<li><a href="http://love.seoul.go.kr/asp/articleView.asp?intSeq=1692">서울사랑_2016.5_따릉이코스</a></li>
+					<li><a href="http://love.seoul.go.kr/asp/articleView.asp?intSeq=1693">서울사랑_2016.5_따릉이사용설명서</a></li>
+				</ul>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -137,17 +153,19 @@
 	<section id="mapsection">
 		<div id="mapContainer">
 			<h2>따릉이 대여소는 어디에?</h2>
-
 			<div id="mapView" class="left"></div>
 			<div id="mapContent" class="left">
 				<div id="mapForm">
 					<h3>원하는 지역구를 선택하세요</h3>
-					<button type="button" class="contact_btn rentbtn " id="geolocate">
+					<button type="button" class="contact_btn rentbtn tooltip" onmouseover="geoInfo()" id="geolocate">
 						나 어디있게?</button>
+					<span class="tooltip_txt">Chrome 브라우저는 https 환경에서만 geolocation을 지원합니다. 참고해주세요.</span>
 					<select name="gu" id="gu" title="원하는 지역구를 선택합니다."></select>
 				</div>
 				<div id="mapDetail">
+					<span style="font-size: 15px;">지역구 선택 후 원하는 대여소를 선택하시면 자세한 설명을 볼 수 있습니다</span>
 					<ul id="m_ul">
+						<img src="resources/img/mapInfo2.PNG">
 					</ul>
 				</div>
 			</div>
@@ -167,8 +185,8 @@
 							[2017.01 - 2018.06] 입니다 </span><br>
 					</p>
 
-					<button type="button" class="contact_btn rentbtn ">2017</button>
-					<button type="button" class="contact_btn rentbtn">2018</button>
+					<button type="button" class="contact_btn rentbtn r_year">2017</button>
+					<button type="button" class="contact_btn rentbtn r_year">2018</button>
 					<hr>
 				</div>
 			</div>
@@ -277,8 +295,8 @@
 				class="fa fa-instagram opacity"></i> <i
 				class="fa fa-twitter opacity"></i> <i class="fa fa-github opacity"></i>
 		</div>
-		<p>Copyright by jiianiii</p>
 	</footer>
 
 </body>
 </html>
+

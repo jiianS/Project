@@ -1,14 +1,25 @@
 $(document).ready(function(){
-    /*modal*/
+    /*회원가입 모달*/
 	$("#join").on("click", function() {
 		$("#joinModal").css("display","block");
         $("#layer").css("display","block");
+        
+    	if($("#email").val() == ""){	$("#email").focus(); return false;}
+    	else if($("#name").val()== ""){ $("#name").focus() ; return false;}
+    	else if($("#password").val()== ""){ $("#password").focus() ; return false;}
+    	else if($("#repwd").val()== ""){ $("#repwd").focus() ; return false;}
+        
 	});
-    
+	
+    /*로그인 모달*/
     $("#login").on("click", function() {
 		$("#loginModal").css("display","block");
         $("#layer").css("display","block");
         $("#login_submit").prop("disabled", true);
+
+    	if($("#id").val() == ""){
+    		$("#id").focus();
+    	}
     
         $(".l_input").on("input", function() {
 			if($("#id").val() != "" && $("#pwd").val() != ""){
@@ -71,7 +82,7 @@ $(document).ready(function(){
 			alert(d.msg);
 			
 			if(d.status == 1) {
-			    location.href="/main";
+			    location.href="/";
 	         }
 		});
 	});
@@ -79,7 +90,6 @@ $(document).ready(function(){
 	
     /*myPage & update*/
     $("#mypage").on("click", function() {
-    	$(".g_home1").css("display", "none");
     	$("#banner").css("padding" , "8em 0");
     	$("#homeTitle").css("color","#505050")
 		$("#profile").css("display","block");
@@ -173,51 +183,60 @@ function checkId() {
 
 	// 이메일 체크하기
 	if (!(regExp.test(checkId))) {
+		
 		alert("잘못된 이메일 형식입니다.ex)test@gmail.com");
 		$("#email").css("background-color", "#BA2B2B");
 		$("#email").css("color", "#ffffff");
-
+    	$("#email").focus();
 		return false;
-	} else {
+	} 
 		$.ajax({
 			url : "checkId",
 			data : { checkId : checkId },
 			success : function(data) {
 				var d = JSON.parse(data)
+				alert(d.msg);
 				if (d.status == '1') {
 					$("#email").css("background-color", "#fdffe4");
 					$("#email").css("color", "#555555");
 				} else if (d.status == '0') {
 					// 아이디 확인 -> 가입 불가
-					alert(d.msg);
 					$("#email").css("background-color", "#BA2B2B");
 					$("#email").css("color", "#ffffff");
+
+					return false;
 				}
 			}
 		});
-	}
+	
 }
 
 // 로그인시 이메일 체크
 function emailOK() {
 	var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	var checkId = $("#id").val();
-
+	
 	// 이메일 체크하기
 	if (!(regExp.test(checkId))) {
 		alert("잘못된 이메일 형식입니다.ex)test@gmail.com");
 		$("#id").css("background-color", "#BA2B2B");
 		$("#id").css("color", "#ffffff");
+		$("#id").focus();
+		return false;
 	}else{
 		 $('#id').css("background-color", "#fdffe4");
 		 $('#id').css("color", "#333333");
+	}
+	
+	if($("#pwd").val() == ""){
+		$("#pwd").focus();
+		return false;
 	}
 	
 }
 
 // 6- 15자 영문대소문자, 숫자, 특수문자 혼합 사용
 function pwdOK() {
-	 
 	 var pwd =  $('input[name="password"]').val();
 	 var regex = /^.*(?=^.{6,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
 
@@ -253,8 +272,11 @@ function checkPwd() {
 
    if (checkPwd == rePwd) {
 	    $('input[name="repwd"]').css("background-color", "#fdffe4");
+	    $("button[type=submit]").prop("disabled", false);
     } else if (checkPwd != repwd) {            
         $('input[name="repwd"]').css("background-color", "#BA2B2B");
+        $('input[name="repwd"]').focus()
+        return false;
     }
 }
 
@@ -281,11 +303,10 @@ function pwdUpdate() {
 			url  : "pwdUpdate",
 			data : {
 				"userEmail" : $("#d_email").val(),
-				"userPwd" : $("#n_pwd").val()
+				"userPwd"	: $("#n_pwd").val()
 			}
 		}).done(function(data) {
 			var d = JSON.parse(data)
-			console.log("sja??" + data)
 			alert(d.msg)
 			if(d.status ==1){
 				location.href="/"
