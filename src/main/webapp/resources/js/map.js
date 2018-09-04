@@ -284,5 +284,4 @@ function geoInfo() {
 	    	"left":e.pageX+10+"px"
 	    });
 	});
-	
 }

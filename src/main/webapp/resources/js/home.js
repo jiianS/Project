@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	
     /*회원가입 모달*/
 	$("#join").on("click", function() {
 		$("#joinModal").css("display","block");
@@ -8,7 +9,6 @@ $(document).ready(function(){
     	else if($("#name").val()== ""){ $("#name").focus() ; return false;}
     	else if($("#password").val()== ""){ $("#password").focus() ; return false;}
     	else if($("#repwd").val()== ""){ $("#repwd").focus() ; return false;}
-        
 	});
 	
     /*로그인 모달*/
@@ -318,21 +318,24 @@ function pwdUpdate() {
 
 // 아이디 삭제
 function idDelete() {
-		alert("정말 탈퇴하실건가요??")
-		$.ajax({
-			type : "post",
-			url : 'userDelete',
-			data : { 
-				"userEmail" : $("#d_email").val(),
-				"userPwd" : $("#d_pwd").val()
-			}
-		}).done(function(data) {
-			var d = JSON.parse(data)
-			alert(d.msg)
-			if(d.status ==1){
-				location.href="/"
-			}
-		});
+		if(confirm("정말 삭제 하시겠습니까?") == false){
+			return;
+		}else{
+			$.ajax({
+				type : "post",
+				url : 'userDelete',
+				data : { 
+					"userEmail" : $("#d_email").val(),
+					"userPwd" : $("#d_pwd").val()
+				}
+			}).done(function(data) {
+				var d = JSON.parse(data)
+				alert(d.msg)
+				if(d.status ==1){
+					location.href="/"
+				}
+			});
+		}
 }
 
 //다음주소 api
@@ -379,6 +382,7 @@ function sample6_execDaumPostcode(postcheck) {
         }
     }).open();
 }
+
 
 
 

@@ -12,13 +12,23 @@ html, body {
 	color: #333333;
 }
 
-header, footer {display: block; clear: both }
-section{clear: both;}
+header, footer {
+	display: block;
+	clear: both
+}
 
+section {
+	clear: both;
+}
 
-h2 {color: #555555;}
+h2 {
+	color: #555555;
+}
 
-a {	text-decoration: none;	color: #808080;}
+a {
+	text-decoration: none;
+	color: #808080;
+}
 
 .top {
 	position: fixed;
@@ -30,15 +40,21 @@ a {	text-decoration: none;	color: #808080;}
 	box-shadow: 0px 2px 1px #54795399;
 }
 
-.wide {	letter-spacing: 4px;}
+.wide {
+	letter-spacing: 4px;
+}
 
-.left {	float: left}
+.left {
+	float: left
+}
 
 .right {
 	float: right
 }
 
-.center {	text-align: center; }
+.center {
+	text-align: center;
+}
 
 .txtLeft {
 	text-align: left;
@@ -63,9 +79,11 @@ a {	text-decoration: none;	color: #808080;}
 	white-space: nowrap;
 }
 
-.button:hover {	background-color: #cecece;}
+.button:hover {
+	background-color: #cecece;
+}
 
-.white {	background-color: #ffffff }
+.white {	background-color: #ffffff}
 
 /*back*/
 .bgImg {
@@ -76,9 +94,21 @@ a {	text-decoration: none;	color: #808080;}
 	min-height: 100%;
 }
 
-.bg0 {	background-image: url("../img/b2.jpg");}
-.bg1 {	background-image: url("../img/b1.jpg");}
+.bg0 {
+	background-image: url("../img/b2.jpg");
+}
 
+.bg1 {
+	background-image: url("../img/b1.jpg");
+}
+
+.bginfo {
+	position: absolute;
+	font-size: 10px;
+	bottom: 10px;
+	float: right;
+	right: 15px;
+}
 /* Banner */
 #banner {
 	background-position: center;
@@ -113,9 +143,8 @@ a {	text-decoration: none;	color: #808080;}
 	font-weight: bold;
 }
 
-.startDiv span{
-	font-size:25px;
-	
+.startDiv span {
+	font-size: 25px;
 }
 
 #goAbout {
@@ -133,14 +162,20 @@ a {	text-decoration: none;	color: #808080;}
 	font-size: 25px
 }
 
-.fa {padding: 5px;}
+.fa {
+	padding: 5px;
+}
 
 .icon .fa:hover {
-	cursor: pointer;	opacity: 0.6
+	cursor: pointer;
+	opacity: 0.6
 }
 
 /*************about****************/
-#about {margin-top: 130px; padding: 60px 30px;}
+#about {
+	margin-top: 130px;
+	padding: 60px 30px;
+}
 
 .aboutDiv {
 	margin-top: 90px;
@@ -163,34 +198,43 @@ a {	text-decoration: none;	color: #808080;}
 	color: #707070;
 }
 
-
-.aboutItem li{ text-align: left;}
+.aboutItem li {
+	text-align: left;
+}
 
 /***********overlay******************/
 .overlay {
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	top: 0;	left: 0;	right: 0;	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	background-color: #606060;
 	opacity: 0.6;
 	z-index: 2;
 	overflow: hidden;
 }
 
-.display_none {	display: none; }
-.overlay img {	margin-top: 20%; margin-left: 40%}
-
-/****** map *********/
-
-#mapsection{ 
-	background-color:#eaeeec;
-	min-height: 100%;	
+.display_none {
+	display: none;
 }
 
-#analSection{ 
-	background-color:#fcfcfc;
-	min-height: 100%;	
+.overlay img {
+	margin-top: 20%;
+	margin-left: 40%
+}
+
+/****** map *********/
+#mapsection {
+	background-color: #eaeeec;
+	height: 1000px;
+}
+
+#analSection {
+	background-color: #fcfcfc;
+	height: 1000px;
 }
 
 /*contact*/
@@ -210,7 +254,9 @@ a {	text-decoration: none;	color: #808080;}
 	padding-left: 7%;
 }
 
-.contact_info {	padding: 23px 20px;}
+.contact_info {
+	padding: 23px 20px;
+}
 
 .contact_icon {
 	margin: 5px 0;
@@ -238,7 +284,7 @@ a {	text-decoration: none;	color: #808080;}
 	position: relative;
 	padding: 0 10px;
 	border-radius: 4px;
-	color : #606060;
+	color: #606060;
 }
 
 #con_comments {
@@ -247,7 +293,7 @@ a {	text-decoration: none;	color: #808080;}
 	height: 45px;
 	font-family: 'Jeju Gothic', sans-serif;
 	border-radius: 4px;
-	color : #606060;
+	color: #606060;
 }
 
 .contact_btn {
@@ -266,7 +312,8 @@ a {	text-decoration: none;	color: #808080;}
 }
 
 #contact_btn:hover {
-	background: #606060; color: #fdfdfd;
+	background: #606060;
+	color: #fdfdfd;
 }
 
 /*footer*/
@@ -276,10 +323,12 @@ footer {
 	color: #dfdfdf;
 	padding: 90px 0;
 }
+
 footer div {
 	color: #b2b2b2;
 	font-size: 22px;
 }
+
 footer div .fa:hover {
 	cursor: pointer;
 	opacity: 0.6

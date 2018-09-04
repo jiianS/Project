@@ -80,7 +80,7 @@ public class UserController {
 	}
 
 	// 로그인 &
-	@RequestMapping(value = "userSelect" , method = RequestMethod.POST)
+	@RequestMapping("/userSelect")
 	public ModelAndView userSelect(HttpServletRequest req, HttpServletResponse res, RedirectAttributes attr,
 			HttpSession session) {
 		
@@ -94,9 +94,6 @@ public class UserController {
 			
 			HashMap<String, Object> resultMap = (HashMap<String, Object>) di.call(param);
 
-			System.out.println("로그인 확인중 ");
-			System.out.println(param );
-			
 			if (resultMap == null) {
 				// 로그인되지 않음
 				resultMap = new HashMap<String, Object>();
@@ -109,7 +106,6 @@ public class UserController {
 			}
 			session.setAttribute("user", resultMap);
 		
-			System.out.println("login" +resultMap );
 			return HttpUtil.makeJsonView(resultMap);
 	}
 
@@ -182,7 +178,7 @@ public class UserController {
 	}
 
 	// login check (정보 확인하기)
-	@RequestMapping(value="userCheck", method = RequestMethod.POST)
+	@RequestMapping("/userCheck")
 	public void userCheck(HttpServletResponse res, HttpSession session) {
 		HashMap<String, Object> resultMap = new HashMap<String, Object>();
 		if (session == null) {

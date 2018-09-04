@@ -28,6 +28,7 @@
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="resources/js/html2canvas.min.js"></script>
+
 <script type="text/javascript" src="resources/js/map.js"></script>
 <script type="text/javascript" src="resources/js/analysis.js"></script>
 <script type="text/javascript" src="resources/js/mail.js"></script>
@@ -81,10 +82,12 @@
 		</div>
 
 		<div class="icon" style="left: 5px; bottom: 5px;">
-			<i class="fa fa-facebook-official"></i> 
-			<i class="fa fa-instagram w3-hover-opacity"></i> 
-			<i class="fa fa-twitter w3-hover-opacity"></i>
+			<a href="https://ko-kr.facebook.com/seoulbike/"><i class="fa fa-facebook-official opacity"></i></a> 
+			<a href="https://www.instagram.com/seoulbike_/"><i class="fa fa-instagram opacity"></i> </a>
+			<a href="https://twitter.com/seoulbike"><i class="fa fa-twitter w3-hover-opacity"></i></a>
 		</div>
+		
+		<div class="bginfo">해당 이미지는 [시정종합월간지_서울 사랑]에 게시된 이미지를 사용함을 알려드립니다(일러스트_조성흠)</div>
 	</header>
 
 	<!--about-->
@@ -278,7 +281,7 @@
 					placeholder="Comment" rows="5" required></textarea>
 
 				<div class="row">
-					<button id="contact_btn" class="contact_btn" type="submit">Send</button>
+					<button id="mail_btn" class="contact_btn" onclick="contact_me()">Send</button>
 				</div>
 			</div>
 		</div>
@@ -291,9 +294,8 @@
 			class="fa fa-arrow-up w3-margin-right"></i>To the top
 		</a>
 		<div>
-			<i class="fa fa-facebook-official opacity"></i> <i
-				class="fa fa-instagram opacity"></i> <i
-				class="fa fa-twitter opacity"></i> <i class="fa fa-github opacity"></i>
+			<a href="https://github.com/jiianiii/Project"><i class="fa fa-github opacity"></i> </a>
+			<label style="font-size: 10px">©2018 jiianiii</label>
 		</div>
 	</footer>
 

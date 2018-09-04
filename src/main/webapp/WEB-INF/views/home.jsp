@@ -35,10 +35,12 @@
 		<div class="top">
 			<div class="bar white" id="navBar">
 				<a href="/" class="left wide button">따릉따릉이</a>
+	
 				<div class="right">
 					<a href="/main" class="bar-item button"> <i
 						class="fa fa-bicycle"></i>HELLO
-					</a> <a href="/main#about" class="bar-item button"> <i
+					</a>
+					<a href="/main#about" class="bar-item button"> <i
 						class="fa fa-bicycle"></i>ABOUT
 					</a> <a href="/main#mapsection" class="bar-item button"> <i
 						class="fa fa-map-marker"></i> 따릉이는 어디에?
@@ -46,13 +48,15 @@
 						class="fa fa-pie-chart"></i> ANALYSIS
 					</a> <a href="/main#contact" class="bar-item button"> <i
 						class="fa fa-envelope"></i> CONTACT
-					</a> <a href="/" class="bar-item button"> <i
-						class="fa fa-user-circle-o" style="font-size: 25px;"></i>
+					</a>
+					<a href="/" class="bar-item button"> 
+						<i class="fa fa-user-circle-o" style="font-size: 24px;"></i>
 					</a>
 				</div>
 			</div>
 		</div>
 	</c:if>
+	
 	<!-- Banner -->
 	<header class="bgImg bg0">
 		<section id="banner">
@@ -234,8 +238,8 @@
 						</div>
 					</div>
 				</div>
-
 			</c:if>
+			<div class="bginfo">해당 이미지는 [시정종합월간지_서울 사랑]에 게시된 이미지를 사용함을 알려드립니다(일러스트_조성흠)</div>
 		</section>
 	</header>
 
@@ -315,7 +319,7 @@
 								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 								type="password" class="form-control j_input" name="password"
 								id="password" onchange="pwdOK()"
-								placeholder="특수문자 / 문자 / 숫자 포함 형태의 6~15자리 이내" required />
+								placeholder="특수문자 / 문자 / 숫자  2개 이상 포함 형태의 6~15자리 이내" required />
 						</div>
 					</div>
 				</div>
